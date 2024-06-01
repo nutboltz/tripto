@@ -7,7 +7,7 @@ export default function Home() {
       <div className="flex gap-16">
         {/* populate trips on left side */}
         <div>trips</div>
-        <CreateTripForm />
+        < CreateTripForm />
       </div>
     </main>
   );

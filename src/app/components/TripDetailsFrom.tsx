@@ -33,28 +33,39 @@ export default function TripDetailsForm() {
                         <label htmlFor={item.title}>
                             {item.title}
                         </label>
-                        {item.radio ? (
+                        {item.inputType === "text" &&
                             <input
-                                name={`input-${item.title}`}
-                                id={`input-${item.title}`}
+                                name={item.title}
+                                id={item.title}
                                 type="text"
                                 value={inputValues[item.title] || ''}
                                 placeholder={`Enter ${item.title}`}
                                 onChange={(e) => handleInputChange(item.title, e.target.value)}
                                 className="text-gray-900 text-sm border-silverBlue-2 border block px-2.5 py-2 focus:outline-none focus:ring-0 w-full"
                             />
-                        ):(
+                        }
+                        {item.inputType === "textArea" &&
                             <textarea
-                                name={`input-${item.title}`}
-                                id={`input-${item.title}`}
-                                rows={10}
+                                name={item.title}
+                                id={item.title}
+                                rows={5}
                                 value={inputValues[item.title] || ''}
                                 placeholder={`Enter ${item.title}`}
                                 onChange={(e) => handleInputChange(item.title, e.target.value)}
                                 className="text-gray-900 text-sm border-silverBlue-2 border block px-2.5 py-2 focus:outline-none focus:ring-0 w-full"
                             />
-                        )
                         }
+                        {/* {item.inputType === "dropdown" &&
+                            <input
+                                name={item.title}
+                                id={item.title}
+                                type="text"
+                                value={inputValues[item.title] || ''}
+                                placeholder={`Enter ${item.title}`}
+                                onChange={(e) => handleInputChange(item.title, e.target.value)}
+                                className="text-gray-900 text-sm border-silverBlue-2 border block px-2.5 py-2 focus:outline-none focus:ring-0 w-full"
+                            />
+                        } */}
                     </div>
                 ))}
                 <button type="submit">Submit</button>

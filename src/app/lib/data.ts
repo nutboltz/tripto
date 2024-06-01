@@ -28,7 +28,7 @@ export const tripDetails = [
     },
     {
         title: "are you a morning or night person?",
-        inputType: "radio",
+        inputType: "dropdown",
         radio: ["morning person", "night person"]
     },
     {

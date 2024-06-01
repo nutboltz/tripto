@@ -20,7 +20,7 @@ model Trip {
   deletedAt       DateTime?
   participants    User[]            @relation("TripParticipants")
   destination     String?
-  itinerary       Json
+  itinerary       Json?
   startDate       DateTime?
   endDate         DateTime?
   tripPreferences TripPreferences[] @relation("TripPreferences")
@@ -45,8 +45,8 @@ model TripPreferences {
   preferences Json /// Leaving this as a json to be flexible
   trip        Trip      @relation("TripPreferences", fields: [tripId], references: [id])
   tripId      String
-  user        User      @relation("UserTripPreferences", fields: [userId], references: [id])
-  userId      String
+  user        User      @relation("UserTripPreferences", fields: [userEmail], references: [email])
+  userEmail   String
 
-  @@unique([tripId, userId])
+  @@unique([tripId, userEmail])
 }

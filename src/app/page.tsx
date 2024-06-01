@@ -1,5 +1,6 @@
 import Image from "next/image";
 import CreateTripForm from "./components/createTripForm";
+import TripDetailsForm from "./components/TripDetailsFrom";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
         {/* populate trips on left side */}
         <div>trips</div>
         < CreateTripForm />
+        < TripDetailsForm />
       </div>
     </main>
   );

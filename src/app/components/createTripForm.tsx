@@ -1,11 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { tripData } from '../lib/data'; // Importing the actual data
+import { tripData } from '../lib/data'; 
 import { createTripType } from '../lib/types';
 
 export default function CreateTripForm() {
-    // Assuming tripData is an array of objects that follow createTripType structure
     const data = tripData as createTripType[];
 
     // State to track input values for each item
@@ -20,7 +19,9 @@ export default function CreateTripForm() {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // Handle form submission logic here, e.g., sending inputValues to your API
+
+        // input endpoint call
+        
         console.log(inputValues);
     };
 

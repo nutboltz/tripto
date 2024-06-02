@@ -83,7 +83,7 @@ export default function TripPage(props: TripProps) {
             />
             <div className="font-semibold text-2xl z-10">trippin&apos;</div>
         </div>
-        <div className="py-10 px-24 flex flex-col gap-10 justify-center items-center">
+        <div className="py-10 px-24 flex flex-col gap-10">
             { itineraryStatus.ready &&
                 <div>
                     <h1 className="font-semibold text-4xl">Trip to</h1>

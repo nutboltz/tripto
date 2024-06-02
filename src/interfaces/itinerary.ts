@@ -10,7 +10,7 @@ export interface Itinerary {
 
 export interface ItineraryItem {
     title: string;
-    duration: number;
+    duration: string;
     needsTicket: boolean;
     needsReservation: boolean;
 }

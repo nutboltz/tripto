@@ -1,54 +1,75 @@
 export const tripData = [
     {
-        title: "location",
+        title: "Enter a destination",
         inputType: "text",
+        placeholder: "Cancun, Mexico"
     },
     {
-        title: "participants email",
+        title: "Arrival",
+        inputType: "date",
+        placeholder: "08/11/2024"
+    },
+    {
+        title: "Departure",
+        inputType: "date",
+        placeholder: "08/20/2024"
+    },
+    {
+        title: "Invite friends",
         inputType: "text",
-    },
-    {
-        title: "start date",
-        inputType: "date",
-    },
-    {
-        title: "end date",
-        inputType: "date",
+        placeholder: "johndoe@gmail.com"
     },
 ]
 
 export const tripDetails = [
     {
-        title: "email",
+        title: "Your email",
         inputType: "text",
+        placeholder: "johndoe@gmail.com"
     },
     {
-        title: "budget",
+        title: "Minimum budget",
         inputType: "text",
+        placeholder: "$500"
     },
     {
-        title: "activities you'd like do",
+        title: "Maximum budget",
+        inputType: "text",
+        placeholder: "$1000"
+    },
+    {
+        title: "List activities you're interested in",
         inputType: "textArea",
+        placeholder: "Snorkling"
     },
     {
-        title: "restaurants you'd like to go to",
+        title: "List restaurants you're excited to try",
         inputType: "textArea",
+        placeholder: "Bagatelle"
     },
     {
-        title: "are you a morning or night person?",
-        inputType: "dropdown",
-        radio: ["morning person", "night person"]
-    },
-    {
-        title: "do you have any dietary restrictions?",
+        title: "Are you a morning or night person?",
         inputType: "text",
+        placeholder: "Night"
     },
     {
-        title: "how do you like to get around?",
+        title: "Do you have any dietary preferences?",
         inputType: "text",
+        placeholder: "Vegan"
     },
     {
-        title: "what vibe do you want the trip to have?",
+        title: "How would you like to travel?",
         inputType: "text",
+        placeholder: "Rental Car"
+    },
+    {
+        title: "What is your vibe for the trip?",
+        inputType: "text",
+        placeholder: "Partying"
+    },
+    {
+        title: "Anything else you would like to do?",
+        inputType: "text",
+        placeholder: "Hiking"
     },
 ]

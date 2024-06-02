@@ -64,8 +64,8 @@ export default function TripPage(props: TripProps) {
 
   return (
     <>
-        <div className={`py-10 px-10 flex flex-col gap-10 relative overflow-hidden ${inter.className}`}>
-        <div className="bg-[#D5AEE4] opacity-15 absolute -top-[10rem] -right-[10rem] h-[40rem] w-[40rem] rounded-full blur-[7rem] z-0"></div>
+        <div className={`py-10 px-10 flex flex-col gap-10 relative ${inter.className}`}>
+        <div className="bg-[#D5AEE4] opacity-15 absolute top-[0rem] right-[0rem] h-[40rem] w-[40rem] rounded-full blur-[7rem] z-0"></div>
         <div className="bg-[#AEC7E4] opacity-15 absolute top-[20rem] -left-[10rem] h-[75rem] w-[75rem] rounded-full blur-[7rem] z-0"></div>
         <div className="flex gap-4 items-center">
             <Image
@@ -76,26 +76,30 @@ export default function TripPage(props: TripProps) {
             />
             <div className="font-semibold text-2xl z-10">trippin&apos;</div>
         </div>
-        <div className="py-10 px-24 flex flex-col gap-10">
-            <div>
-                <h1 className="font-semibold text-4xl">Trip to</h1>
-                <h1 className="font-semibold text-4xl text-gray-400">{trip.destination}</h1>
-            </div>
+        <div className="py-10 px-24 flex flex-col gap-10 justify-center items-center">
+            { itineraryStatus.ready &&
+                <div>
+                    <h1 className="font-semibold text-4xl">Trip to</h1>
+                    <h1 className="font-semibold text-4xl text-gray-400">{trip.destination}</h1>
+                </div>
+            }
             <div className="z-10">
             { !itineraryStatus.ready ? 
-                <div className='flex flex-col gap-4'>
-                    <h1 className="text-2xl font-semibold">Waiting on all participants to submit their preferences</h1>
-                    <p className="font-semibold">All participants: <span className="font-normal">{itineraryStatus.tripParticipants.join(', ')}</span></p>
+                <div className='flex flex-col gap-4 justify-center items-center pt-28'>
+                    <h1 className="text-4xl font-semibold max-w-lg text-center">Get ready for your trip to {trip.destination}</h1>
+                    <p className="text-2xl text-[#8B8B8B] max-w-2xl text-center">We will email you the once everyone has completed their form and your itinerary is ready.</p>
+                    {/* <p className="font-semibold">All participants: <span className="font-normal">{itineraryStatus.tripParticipants.join(', ')}</span></p>
                     <p className="font-semibold">Participants that have submitted: <span className="font-normal">{itineraryStatus.submittedParticipants.length > 0 ? itineraryStatus.submittedParticipants.join(', ') : 'None'}</span></p>
-                    <p className="font-semibold">Link to submit preferences: <span className="font-normal"><a href={preferencesLink}>{preferencesLink}</a></span></p>
+                    <p className="font-semibold">Link to submit preferences: <span className="font-normal"><a href={preferencesLink}>{preferencesLink}</a></span></p> */}
 
 
-                    <button 
-                        onClick={onRefresh}
-                        className="flex mt-4 px-6 py-2.5 w-40 text-white bg-[#080E1E] rounded-full justify-center hover:underline"
+                    <a 
+                        // onClick={onRefresh}
+                        href={preferencesLink}
+                        className="flex mt-4 px-6 py-2.5 text-white bg-[#080E1E] rounded-full justify-center w-fit"
                     >
-                        Refresh
-                    </button>
+                        Set preferences
+                    </a>
                 
                 </div> : itinerary ?
                 <ItineraryTimeline itinerary={itinerary}/> : null

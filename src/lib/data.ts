@@ -49,15 +49,15 @@ export const tripDetails = [
         options:["Night", "Day"]
     },
     {
-        title: "Do you have any dietary preferences?",
-        inputType: "text",
-        placeholder: "Vegan",
-    },
-    {
         title: "How would you like to travel?",
         inputType: "dropdown",
         placeholder: "Rental car",
         options:["Rental car", "Public transportation", "Taxi"]
+    },
+    {
+        title: "Do you have any dietary preferences?",
+        inputType: "text",
+        placeholder: "Vegan",
     },
     {
         title: "What is your vibe for the trip?",

@@ -4,8 +4,7 @@ import { useState } from 'react';
 import { tripData } from '../lib/data';
 import { createTripType } from '../interfaces/trip';
 import axios from 'axios';
-import { getBaseUrl } from '@/lib/utils';
-import { url } from 'inspector';
+import { getBaseUrl, getBaseUrlServer } from '@/lib/utils';
 
 interface CreateTripFormProps {
     onSubmit: (tripId: string) => void;
@@ -36,22 +35,23 @@ export default function CreateTripForm(props: CreateTripFormProps) {
         console.log(inputValues);
         axios.post(getBaseUrl()+ '/api/createTrip',
         {
-          destination: inputValues.location,
-          startDate: inputValues["start date"],
-          endDate: inputValues["end date"],
-          participants: inputValues["participants email"].split(',').map(email => email.trim())
+          destination: inputValues["Enter a destination"],
+          startDate: inputValues["Arrival"],
+          endDate: inputValues["Departure"],
+          participants: inputValues["Invite friends"].split(',').map(email => email.trim())
         }
         ).then(res => {
-
-            // send email invite to participants
-            axios.post(getBaseUrl()+ '/api/sendInviteEmail',
-            {
-                recipients: inputValues["participants email"].split(',').map(email => email.trim()),
-                url: getBaseUrl() + `/trip/${res.data.tripId}/preferences`
-            }
-            ).then(res => {
+            try {
+                axios.post(getBaseUrl()+ '/api/sendInviteEmail',
+                {
+                    recipients: inputValues["Invite friends"].split(',').map(email => email.trim()),
+                    preferencesUrl: getBaseUrlServer() + `/trip/${res.data.tripId}/preferences`
+                })
+            } catch (error) {
+                console.log(error)
+            } finally {
                 onSubmit(res.data.tripId);
-            })
+            }
         })
     };
 

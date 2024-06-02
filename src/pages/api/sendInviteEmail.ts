@@ -1,7 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { sendEmail } from '@/server/lib/mailgun';
-import { RecipientsMap } from '@/interfaces/email';
-
  
 export default async function handler(
   req: NextApiRequest,

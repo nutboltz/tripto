@@ -5,8 +5,8 @@ import {
 } from "@/lib/config";
 import { HTMLString } from "@/interfaces/email";
 
-const DOMAIN = "domain";
-const SENDER = "TripTo";
+const DOMAIN = "tripto.eunicehx920.me";
+const SENDER = "noreply@tripto.eunicehx920.me";
 const SENDER_NAME = "TripTo";
 
 /**

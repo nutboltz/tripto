@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { sendEmail } from '@/server/lib/mailgun';
-import { RecipientsMap } from '@/interfaces/email';
 
  
 export default async function handler(
@@ -11,9 +10,9 @@ export default async function handler(
     
   const { recipients, preferencesUrl } = req.body as { recipients: string[], preferencesUrl: string }
 
-  const subject = "Your friends are waiting for you to submit your preferences"
+  const subject = "Reminder: Submit your trip preferences!"
 
-  const htmlMessage = "You've been invited to join a trip! Click <a href='" + preferencesUrl + "'>here</a> to submit your preferences."
+  const htmlMessage = "Your friends are waiting for your preferences! Click <a href='" + preferencesUrl + "'>here</a> to submit your trip preferences."
 
   await sendEmail(
     recipients, 

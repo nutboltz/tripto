@@ -16,7 +16,7 @@ export const tripData = [
     },
     {
         title: "Invite friends",
-        inputType: "text",
+        inputType: "invite",
         placeholder: "johndoe@gmail.com"
     },
 ]

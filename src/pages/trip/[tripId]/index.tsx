@@ -83,7 +83,7 @@ export default function TripPage(props: TripProps) {
 
                     <button 
                         onClick={onRefresh}
-                        className="flex mt-4 px-6 py-2.5 w-40 text-white bg-[#080E1E] rounded-full justify-center"
+                        className="flex mt-4 px-6 py-2.5 w-40 text-white bg-[#080E1E] rounded-full justify-center hover:underline"
                     >
                         Refresh
                     </button>

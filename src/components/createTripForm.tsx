@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { tripData } from '../lib/data';
 import { createTripType } from '../interfaces/trip';
 import axios from 'axios';
+import { getBaseUrl } from '@/lib/utils';
 
 interface CreateTripFormProps {
     onSubmit: (tripId: string) => void;
@@ -27,7 +28,7 @@ export default function CreateTripForm(props: CreateTripFormProps) {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(inputValues);
-        axios.post(process.env.NEXT_PUBLIC_BASE_URL+ '/api/createTrip',
+        axios.post(getBaseUrl()+ '/api/createTrip',
         {
           destination: inputValues.location,
           startDate: inputValues["start date"],

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { tripDetails } from '../lib/data';
 import { tripDetailsType } from '../interfaces/trip';
 import axios from 'axios';
+import { getBaseUrl } from '@/lib/utils';
 
 interface TripDetailsFormProps {
     tripId: string;
@@ -28,7 +29,7 @@ export default function TripDetailsForm(props: TripDetailsFormProps) {
         e.preventDefault();
         console.log(inputValues);
 
-        axios.post(process.env.NEXT_PUBLIC_BASE_URL+ '/api/submitTripPreference',
+        axios.post(getBaseUrl()+ '/api/submitTripPreference',
         {
             tripId,
             userEmail: inputValues.email,

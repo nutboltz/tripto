@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getPrismaClient } from '../../server/lib/prisma'
+import { fetchItineraryStatus, generateItinerary } from '@/server/itinerary';
  
 export default async function handler(
   req: NextApiRequest,
@@ -28,24 +29,11 @@ export default async function handler(
     }
     });
 
-    // If the user is the last one to submit their preferences, we can now create the trip
-    const trip = await prisma.trip.findUnique({
-      where: {
-        id: tripId
-      },
-      include: {
-        participants: true
-      }
-    })
+   const { ready } = await fetchItineraryStatus(tripId)
 
-    const submittedPreferences = await prisma.tripPreferences.findMany({
-        where: {
-            tripId
-        }
-    })
-
-
-
+   if (ready) {
+    generateItinerary(tripId)
+   }
 
   return res.status(200).json({ preferenceId: preference.id })
   } catch (error) {

@@ -5,6 +5,7 @@ import { tripData } from '../lib/data';
 import { createTripType } from '../interfaces/trip';
 import axios from 'axios';
 import { getBaseUrl } from '@/lib/utils';
+import { url } from 'inspector';
 
 interface CreateTripFormProps {
     onSubmit: (tripId: string) => void;
@@ -36,7 +37,16 @@ export default function CreateTripForm(props: CreateTripFormProps) {
           participants: inputValues["participants email"].split(',').map(email => email.trim())
         }
         ).then(res => {
-            onSubmit(res.data.tripId);
+
+            // send email invite to participants
+            axios.post(getBaseUrl()+ '/api/sendInviteEmail',
+            {
+                recipients: inputValues["participants email"].split(',').map(email => email.trim()),
+                url: getBaseUrl() + `/trip/${res.data.tripId}/preferences`
+            }
+            ).then(res => {
+                onSubmit(res.data.tripId);
+            })
         })
     };
 

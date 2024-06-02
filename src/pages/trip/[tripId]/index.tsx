@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import ItineraryTimeline from '@/components/itineraryTimeline';
 import Image from 'next/image';
+import { Loader2 } from 'lucide-react';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -33,11 +34,12 @@ interface TripProps {
 export default function TripPage(props: TripProps) {
 
     const { trip, itineraryStatus, preferencesLink } = props;
-
     const [itinerary, setItinerary] = useState<Itinerary>();
+    const [refreshing, setRefreshing] = useState(true);
 
     useEffect(() => {
         if (itineraryStatus.ready) {
+            setRefreshing(true);
             axios.get(getBaseUrl()+ '/api/getTripItinerary',
             {
                 params: {
@@ -45,6 +47,11 @@ export default function TripPage(props: TripProps) {
                 }
             }
             ).then(res => {
+                // delay 2 seconds
+                setTimeout(() => {
+                    setRefreshing(false);
+                }, 2000);
+
                 setItinerary(res.data.itinerary);
             })
         }
@@ -95,7 +102,8 @@ export default function TripPage(props: TripProps) {
                         Set preferences
                     </a>
                 
-                </div> : itinerary ?
+                </div> : refreshing ?
+                <Loader2 className="animate-spin w-10 h-10"/> : itinerary ?
                 <ItineraryTimeline itinerary={itinerary}/> : null
             }
             </div>

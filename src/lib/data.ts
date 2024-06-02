@@ -92,7 +92,7 @@ export const itineraryPlaceholder = {
             needsReservation: false,
         },
         {
-            title: " Lunch at Harney Sushi (Old Town)",
+            title: "Lunch at Harney Sushi (Old Town)",
             duration: 1.5,
             type: "food",
             needsTicket: true,

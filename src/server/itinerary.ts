@@ -1,35 +1,30 @@
+import { Trip, TripPreferences, User } from "@prisma/client";
 import { ItineraryStatus } from "../interfaces/itinerary";
 import { openAiResponse } from "./lib/gpt/openai";
 import { getPrismaClient } from "./lib/prisma";
 
-
-export const fetchItineraryStatus = async (tripId: string): Promise<ItineraryStatus> => {
-
+export const fetchTrip = async (tripId: string) => {
     const prisma = getPrismaClient();
-    const trip = await prisma.trip.findUnique(
-        {
-            where: {
-                id: tripId
-            },
-            select: {
-                participants: {
-                    select: {
-                        email: true
-                    }
-                },
-                tripPreferences: {
-                    select: {
-                        userEmail: true
-                    }
-                },
-                itinerary: true
-            }
+    const trip = await prisma.trip.findUnique({
+        where: {
+            id: tripId
+        },
+        include: {
+            participants: true,
+            tripPreferences: true
         }
-    )
+    })
 
     if (!trip) {
         throw new Error(`Trip with id ${tripId} not found`)
     }
+
+    return trip
+}
+
+export const getItineraryStatus = async (trip: Trip & { participants: User[], tripPreferences: TripPreferences[] }): Promise<ItineraryStatus> => {
+
+    const prisma = getPrismaClient();
 
     const allParticipants = trip.participants.map(participant => participant.email);
     const submittedParticipants = trip.tripPreferences.map(preference => preference.userEmail);

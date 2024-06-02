@@ -15,10 +15,13 @@
     "autoprefixer": "^10.4.19",
     "axios": "^1.7.2",
     "next": "14.2.3",
+    "next-superjson": "^0.0.4",
+    "next-superjson-plugin": "^0.6.3",
     "openai": "^4.47.3",
     "prisma": "^5.14.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "superjson": "^2.2.1"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -73,3 +73,84 @@ export const tripDetails = [
         placeholder: "Hiking"
     },
 ]
+
+export const itineraryPlaceholder = {
+    "08/11" : [
+        {
+            title: "Check in at Hotel Plaza Carrilo's",
+            duration: "2",
+        },
+        {
+            title: "Breakfast at Cafe Nader",
+            duration: 1.5,
+        },
+        {
+            title: "Visit El Rey Ruins",
+            duration: 2,
+        },
+        {
+            title: "Lunch at Limoncello",
+            duration: 1.5,
+        },
+        {
+            title: "Explore Interactive Aquarium Cancun",
+            duration: 2.5,
+        },
+        {
+            title: "Dinner at Taqueria Los Chachalacos",
+            duration: 1.5,
+        },
+        {
+            title: "Nightlife at Palazzo Cancun",
+            duration: 3.5,
+        },
+    ],
+    "08/12" : [
+        {
+            title: "Breakfast at Cafe Antoinette",
+            duration: 1.5,
+        },
+        {
+            title: "Visit Cancun Wax Museum",
+            duration: 2,
+        },
+        {
+            title: "Lunch at La Destileria",
+            duration: 1.5,
+        },
+        {
+            title: "Relax at Playa Delfines",
+            duration: 3,
+        },
+        {
+            title: "Dinner at Lorenzillo's",
+            duration: 2,
+        },
+        {
+            title: "Nightlife at Coco Bongo",
+            duration: 3.5,
+        },
+    ],
+    "08/13" : [
+        {
+            title: "Breakfast at Cafe Nader",
+            duration: 1.5,
+        },
+        {
+            title: "Visit Xcaret Park",
+            duration: 4,
+        },
+        {
+            title: "Lunch at La Parrilla",
+            duration: 1.5,
+        },
+        {
+            title: "Dinner at Puerto Madero",
+            duration: 2,
+        },
+        {
+            title: "Nightlife at Mandala Beach Club",
+            duration: 3.5,
+        },
+    ],
+}

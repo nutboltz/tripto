@@ -50,9 +50,8 @@ export const tripDetails = [
     },
     {
         title: "Do you have any dietary preferences?",
-        inputType: "dropdown",
+        inputType: "text",
         placeholder: "Vegan",
-        options:["Night", "Day"]
     },
     {
         title: "How would you like to travel?",
@@ -67,7 +66,7 @@ export const tripDetails = [
     },
     {
         title: "Anything else you would like to do?",
-        inputType: "text",
+        inputType: "textArea",
         placeholder: "Hiking"
     },
 ]

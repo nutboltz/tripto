@@ -7,5 +7,6 @@ export type createTripType = {
 export type tripDetailsType = {
     title: string;
     inputType: string;
+    placeholder: string;
     options?: string[];
 }

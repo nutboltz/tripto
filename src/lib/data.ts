@@ -1,3 +1,5 @@
+import { ParsedTikTokLinks } from "@/interfaces/itinerary";
+
 export const tripData = [
     // {
     //     title: "Enter a destination",
@@ -170,7 +172,7 @@ export const itineraryPlaceholder = {
             title: "Travel to La Jolla Sea Caves",
             duration: 0.5,
             type: "travel",
-            needsTicket: false,
+            needsTicket: true,
             needsReservation: false,
         },
         {
@@ -301,118 +303,134 @@ export const itineraryPlaceholder = {
 export const parsedTikTokLinks = {
     "https://www.tiktok.com/@esthercalifornia/video/7335257921292438826?q=san%20diego%20restaurants&t=1717339170447": [
         {
-            locationName: "Morning Glory",
-            type: "food",
-            roughArea: "Little Italy",
+            title: "Morning Glory",
+            imageSrc: "https://media-cdn.tripadvisor.com/media/photo-o/1b/fc/52/07/img-20200813-131129-largejpg.jpg",
+            category: "food",
+            location: "Little Italy",
         },
         {
-            locationName: "Born and Raised",
-            type: "food",
-            roughArea: "Little Italy",
+            title: "Born and Raised",
+            imageSrc: "https://media-cdn.tripadvisor.com/media/photo-m/1280/1a/9e/89/bf/photo4jpg.jpg",
+            category: "food",
+            location: "Little Italy",
         },
         {
-            locationName: "Harney Sushi",
-            type: "food",
-            roughArea: "Old Town",
+            title: "Harney Sushi",
+            imageSrc: "https://media-cdn.tripadvisor.com/media/photo-w/17/ba/e9/92/the-danielle-roll-has.jpg",
+            category: "food",
+            location: "Old Town",
         },
         {
-            locationName: "Awash Ethiopian Restaurant",
-            type: "food",
-            roughArea: "North Park"
+            title: "Awash Ethiopian Restaurant",
+            imageSrc: "https://media-cdn.tripadvisor.com/media/photo-m/1280/17/cf/f9/0a/photo0jpg.jpg",
+            category: "food",
+            location: "North Park"
         },
         {
-            locationName: "Steamy Piggy",
-            type: "food",
-            roughArea: "Kearny Mesa"
+            title: "Steamy Piggy",
+            imageSrc: "https://media-cdn.tripadvisor.com/media/photo-w/15/ba/20/62/rainbow-dumplings.jpg",
+            category: "food",
+            location: "Kearny Mesa"
         }
     ],
     "https://www.tiktok.com/@localemag/video/7336711294696918314?q=san%20diego%20restaurants&t=1717339170447": [
         {
-            locationName: "Captain's Quarters",
-            type: "food",
-            roughArea: "San Diego"
+            title: "Captain's Quarters",
+            imageSrc: "https://media-cdn.tripadvisor.com/media/photo-w/2a/b7/15/3c/super-cool-cocktails.jpg",
+            category: "food",
+            location: "San Diego"
         },
         {
-            locationName: "The Marine Room",
-            type: "food",
-            roughArea: "La Jolla"
+            title: "The Marine Room",
+            imageSrc: "https://media-cdn.tripadvisor.com/media/photo-m/1280/18/11/82/60/lobster-tail.jpg",
+            category: "food",
+            location: "La Jolla"
         },
         {
-            locationName: "The Britannia Tearooms",
-            type: "coffee",
-            roughArea: "Point Loma"
+            title: "The Britannia Tearooms",
+            imageSrc: "https://s3-media0.fl.yelpcdn.com/bphoto/Lw2LTNDi7llMFOvhnqkp8w/o.jpg",
+            category: "coffee",
+            location: "Point Loma"
         },
         {
-            locationName: "Mothership",
-            type: "food",
-            roughArea: "South Park"
+            title: "Mothership",
+            imageSrc: "https://media-cdn.tripadvisor.com/media/photo-w/29/df/31/08/caption.jpg",
+            category: "food",
+            location: "South Park"
         },
         {
-            locationName: "Santa Gula",
-            type: "food",
-            roughArea: "Gaslamp Quarter"
+            title: "The Seventh House",
+            imageSrc: "https://s3-media0.fl.yelpcdn.com/bphoto/sB9W3IJ-TnB6pht5kOa09A/o.jpg",
+            category: "food",
+            location: "San Diego"
         },
         {
-            locationName: "The Seventh House",
-            type: "food",
-            roughArea: "San Diego"
-        },
-        {
-            locationName: "Wolfie's Carousel",
-            type: "food",
-            roughArea: "Little Italy"
+            title: "Wolfie's Carousel",
+            imageSrc: "https://s3-media0.fl.yelpcdn.com/bphoto/SUw8ZVF5Gg29f875-M_kfg/o.jpg",
+            category: "food",
+            location: "Little Italy"
         }
     ],
     "https://www.tiktok.com/@localemag/video/7300788749338725674?q=things%20to%20do%20in%20san%20diego&t=1717339927285": [
         {
-            locationName: "La Jolla Sea Caves",
-            type: "activity",
-            roughArea: "La Jolla"
+            title: "La Jolla Sea Caves",
+            imageSrc: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/05/f1/73/la-jolla-caves.jpg?w=1400&h=-1&s=1",
+            category: "activity",
+            location: "La Jolla"
         },
         {
-            locationName: "Coffee with bunnies at Grange Garden",
-            type: "coffee",
-            roughArea: "Solana Beach",
+            title: "Coffee with bunnies at Grange Garden",
+            imageSrc: "https://s3-media0.fl.yelpcdn.com/bphoto/LnjvPOmMrCUlUUNiv-q6wQ/o.jpg",
+            category: "coffee",
+            location: "Solana Beach",
         },
         {
-            locationName: "Brunch at Stratford Court Cafe",
-            type: "food",
-            roughArea: "Del Mar",
+            title: "Brunch at Stratford Court Cafe",
+            imageSrc: "https://s3-media0.fl.yelpcdn.com/bphoto/RjC46ojLIuPKjE4NgV-pgg/o.jpg",
+            category: "food",
+            location: "Del Mar",
         },
         {
-            locationName: "Lightscape at the San Diego Botanic Garden",
-            type: "activity",
-            roughArea: "Encinitas",
+            title: "Lightscape at the San Diego Botanic Garden",
+            imageSrc: "https://s3-media0.fl.yelpcdn.com/bphoto/B11PXwY5ljaZJdRG-GoKlg/348s.jpg",
+            category: "activity",
+            location: "Encinitas",
         },
         {
-            locationName: "Dine in an Igloo at Lakehouse Resort",
-            type: "food",
-            roughArea: "San Marcos",
+            title: "Dine in an Igloo at Lakehouse Resort",
+            imageSrc: "https://symphony.cdn.tambourine.com/lakehouse-hotel-resort/media/tunnelheader-651d9bb89789b.webp",
+            category: "food",
+            location: "San Marcos",
         },
         {
-            locationName: "Hike Annie Canyon Trail",
-            type: "activity",
-            roughArea: "Borrego Springs",
+            title: "Hike Annie Canyon Trail",
+            imageSrc: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/5f/81/02/annie-s-canyon-trail.jpg?w=1200&h=-1&s=1",
+            category: "activity",
+            location: "Borrego Springs",
         },
         {
-            locationName: "The Invigatorium",
-            type: "coffee",
-            roughArea: "San Diego",
+            title: "The Invigatorium",
+            imageSrc: "https://s3-media0.fl.yelpcdn.com/bphoto/AukwJO92ND84pSw7oPt-rw/o.jpg",
+            category: "coffee",
+            location: "San Diego",
         },
         {
-            locationName: "Free Flight Sanctuary",
-            type: "activity",
-            roughArea: "Del Mar",
+            title: "Free Flight Sanctuary",
+            imageSrc: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/23/6e/e4/e0/free-flight.jpg?w=1400&h=-1&s=1",
+            category: "activity",
+            location: "Del Mar",
         },
         {
-            locationName: "Ichi Ban Sando",
-            type: "food",
-            roughArea: "Chula Vista",
+            title: "Ichi Ban Sando",
+            imageSrc: "https://s3-media0.fl.yelpcdn.com/bphoto/LO48s0vKqvG-h6RD01haWA/o.jpg",
+            category: "food",
+            location: "Chula Vista",
         },
         {
-            locationName: "Paraglider at Torrey Pines Gliderport",
-            type: "food",
-            roughArea: "Torrey Pines",
+            title: "Paraglider at Torrey Pines Gliderport",
+            imageSrc: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/8f/2e/7a/torrey-pines-gliderport.jpg?w=600&h=-1&s=1",
+            category: "food",
+            location: "Torrey Pines",
         }
     ]
-}
+} as ParsedTikTokLinks;

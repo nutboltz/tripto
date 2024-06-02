@@ -32,7 +32,6 @@ export default function CreateTripForm(props: CreateTripFormProps) {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(inputValues);
         axios.post(getBaseUrl()+ '/api/createTrip',
         {
           destination: inputValues["Enter a destination"],

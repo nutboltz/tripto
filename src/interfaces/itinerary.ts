@@ -26,3 +26,20 @@ export interface Preference {
     vibe: string;
     others: string;
 }
+
+export interface ParsedActivity {
+    imageSrc: string;
+    title: string;
+    location: string;
+    category: string;
+    rating?: number;
+}
+
+export interface ParsedTikTokLinks {
+    [key: string]: { 
+        title: string; 
+        imageSrc: string; 
+        category: string; 
+        location: string; 
+    }[];
+}

@@ -33,7 +33,7 @@ export default function ItineraryTimeline(props: ItineraryProps) {
                                         {activity.needsTicket === true &&
                                             <div className="flex gap-2 items-center">
                                                 <div className="w-2 h-2 bg-[#FF4646] rounded-full"></div>
-                                                <p className="text-[#FF4646]">{activity.duration} Needs Reservation</p>
+                                                <p className="text-[#FF4646]">Needs Reservation</p>
                                             </div>
                                         }
                                     </div>

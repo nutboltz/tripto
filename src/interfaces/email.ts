@@ -1,9 +1,11 @@
 export type HTMLString = string;
 
-export type RecipientsInfo = {
-    firstName: string;
-    id: number;
-  };
+  export type RecipientsMap = {
+    [email: string]: {
+      firstName: string;
+      id: number;
+    };
+  }
   
   export type emailOptions = {
     to: string[];

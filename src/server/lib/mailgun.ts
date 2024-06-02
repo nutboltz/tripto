@@ -1,34 +1,30 @@
 import axios from "axios";
-import { RecipientsInfo } from "@/interfaces/email";
+import { RecipientsMap } from "@/interfaces/email";
 import {
   mailgunBaseUrl,
 } from "@/lib/config";
 import { HTMLString } from "@/interfaces/email";
 
-const DOMAIN = "domain";
-const SENDER = "tripto";
+const DOMAIN = "tripto.eunicehx920.me";
+const SENDER = "noreply@tripto.eunicehx920.me";
 const SENDER_NAME = "TripTo";
 
 /**
  * Sends an email thru Mailgun's API
  */
 
-async function sendEmail(
-  recipientsMap: Map<string, RecipientsInfo>,
+export async function sendEmail(
+  recipients: string[], // list of emails
   subject: string,
   html: HTMLString
 ) {
   const user = "api";
   const apiKey = process.env.MAILGUN_API_KEY || "";
 
-  const recipientsObj = Object.fromEntries(recipientsMap);
-  const recipients = JSON.stringify(recipientsObj);
-
-  const commaDeliminatedEmails = Object.keys(recipientsObj).join(", ");
+  const commaDeliminatedEmails = recipients.join(",");
 
   const message = {
     from: `${SENDER_NAME} <${SENDER}>`,
-    "recipient-variables": recipients,
     to: commaDeliminatedEmails,
     subject,
     html,

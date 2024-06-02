@@ -19,7 +19,7 @@ export default function Home() {
         <div className="bg-[#AEC7E4] opacity-15 absolute top-[20rem] -left-[10rem] h-[75rem] w-[75rem] rounded-full blur-[7rem] z-0"></div>
         <h1 className="font-semibold text-4xl z-10">Your trip</h1>
         <div className="z-10">
-          < CreateTripForm onSubmit={onSubmit}/>
+          <CreateTripForm onSubmit={onSubmit}/>
         </div>
       </div>
     </main>

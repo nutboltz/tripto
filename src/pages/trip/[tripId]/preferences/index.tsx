@@ -16,6 +16,7 @@ export default function Preferences() {
   const onSubmit = () => {
     router.push(`/trip/${tripId}`)
   }
+  
 
   if (!tripId) {
     return <h1>404 - Page Not Found</h1>

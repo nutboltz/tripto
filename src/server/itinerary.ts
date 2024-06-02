@@ -23,7 +23,7 @@ export const fetchTrip = async (tripId: string) => {
 
         return {
             id: 'test',
-            destination: 'Cancun, Mexico',
+            destination: 'San Diego, California',
             participants: [mockUser],
             tripPreferences: [],
             deletedAt: null,
@@ -62,7 +62,7 @@ export const fetchTrip = async (tripId: string) => {
 
         return {
             id: 'test2',
-            destination: 'Cancun, Mexico',
+            destination: 'San Diego, California',
             participants: [mockUser],
             tripPreferences: [mockTripPreference],
             deletedAt: null,
@@ -73,7 +73,6 @@ export const fetchTrip = async (tripId: string) => {
             endDate: endDateDate
         } as Trip & { participants: User[], tripPreferences: TripPreferences[] }
     }
-
 
     const prisma = getPrismaClient();
     const trip = await prisma.trip.findUnique({

@@ -10,7 +10,7 @@ export default function Home() {
   const router = useRouter()
 
   const onSubmit = (tripId: string) => {
-    router.push(`/trip/${tripId}`)
+    router.push(`/trip/${tripId}/preferences`)
   }
 
   return (

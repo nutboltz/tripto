@@ -13,11 +13,11 @@ export default async function handler(
 
   const htmlMessage = "You've been invited to join a trip! Click <a href='" + preferencesUrl + "'>here</a> to submit your preferences."
 
-  // await sendEmail(
-  //   recipients, 
-  //   subject,
-  //   htmlMessage
-  // )
+  await sendEmail(
+    recipients, 
+    subject,
+    htmlMessage
+  )
 
   return res.status(200).json({ success: true })
   } catch (error) {

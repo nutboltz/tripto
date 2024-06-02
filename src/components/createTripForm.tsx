@@ -25,25 +25,21 @@ export default function CreateTripForm(props: CreateTripFormProps) {
         }));
     };
 
-    // const handleInvite = (e: React.MouseEvent<HTMLButtonElement>) => {
-    //     e.preventDefault();
-    //     console.log('Invite button clicked');
-    // };
-
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        const travellersEmails = inputValues["Travellers' emails (including yourself)"].split(',').map(email => email.trim());
         axios.post(getBaseUrl()+ '/api/createTrip',
         {
-          destination: inputValues["Enter a destination"],
-          startDate: inputValues["Arrival"],
-          endDate: inputValues["Departure"],
-          participants: inputValues["Invite friends"].split(',').map(email => email.trim())
+          destination: inputValues["destination"],
+          startDate: inputValues["arrival"],
+          endDate: inputValues["departure"],
+          participants: travellersEmails
         }
         ).then(res => {
             try {
                 axios.post(getBaseUrl()+ '/api/sendInviteEmail',
                 {
-                    recipients: inputValues["Invite friends"].split(',').map(email => email.trim()),
+                    recipients: travellersEmails,
                     preferencesUrl: getBaseUrlServer() + `/trip/${res.data.tripId}/preferences`
                 })
             } catch (error) {
@@ -66,8 +62,8 @@ export default function CreateTripForm(props: CreateTripFormProps) {
                                 name="destination"
                                 id="destination"
                                 type="text"
-                                value=""
-                                placeholder="Cancun, Mexico"
+                                value={inputValues["destination"]}
+                                placeholder="San Diego, California"
                                 onChange={(e) => handleInputChange("destination", e.target.value)}
                                 className="text-gray-900 text-sm border-silverBlue-2 border border-black rounded px-2.5 py-2 focus:outline-none focus:ring-0 w-2/3"
                             />
@@ -81,7 +77,7 @@ export default function CreateTripForm(props: CreateTripFormProps) {
                                     name="arrival"
                                     id="arrival"
                                     type="text"
-                                    value=""
+                                    value={inputValues["arrival"]}
                                     placeholder="08/11/2024"
                                     onChange={(e) => handleInputChange("arrival", e.target.value)}
                                     className="text-gray-900 text-sm border-silverBlue-2 border border-black rounded px-2.5 py-2 focus:outline-none focus:ring-0"
@@ -95,9 +91,9 @@ export default function CreateTripForm(props: CreateTripFormProps) {
                                     name="departure"
                                     id="departure"
                                     type="text"
-                                    value=""
+                                    value={inputValues["departure"]}
                                     placeholder="08/20/2024"
-                                    onChange={(e) => handleInputChange("arrival", e.target.value)}
+                                    onChange={(e) => handleInputChange("departure", e.target.value)}
                                     className="text-gray-900 text-sm border-silverBlue-2 border border-black rounded px-2.5 py-2 focus:outline-none focus:ring-0"
                                 />
                         </div>

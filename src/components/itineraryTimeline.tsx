@@ -9,6 +9,7 @@ interface ItineraryProps {
 
 export default function ItineraryTimeline(props: ItineraryProps) {
     const  { itinerary } = props;
+    const [comments, setComments] = React.useState("");
 
     return (
         <div>
@@ -65,9 +66,8 @@ export default function ItineraryTimeline(props: ItineraryProps) {
                         name="itinerary-updates"
                         id="itinerary-updates"
                         type="text"
-                        value=""
-                        // placeholder="Cancun, Mexico"
-                        onChange={(e) => console.log(e.target.value)}
+                        value={comments}
+                        onChange={(e) => setComments(e.target.value)}
                         className="text-gray-900 text-sm border border-black rounded px-2.5 py-2 focus:outline-none focus:ring-0 w-full"
                     />
                 </div>

@@ -88,13 +88,7 @@ export default function TripPage(props: TripProps) {
                 <div className='flex flex-col gap-4 justify-center items-center pt-28'>
                     <h1 className="text-4xl font-semibold max-w-lg text-center">Get ready for your trip to {trip.destination}</h1>
                     <p className="text-2xl text-[#8B8B8B] max-w-2xl text-center">We will email you the once everyone has completed their form and your itinerary is ready.</p>
-                    {/* <p className="font-semibold">All participants: <span className="font-normal">{itineraryStatus.tripParticipants.join(', ')}</span></p>
-                    <p className="font-semibold">Participants that have submitted: <span className="font-normal">{itineraryStatus.submittedParticipants.length > 0 ? itineraryStatus.submittedParticipants.join(', ') : 'None'}</span></p>
-                    <p className="font-semibold">Link to submit preferences: <span className="font-normal"><a href={preferencesLink}>{preferencesLink}</a></span></p> */}
-
-
                     <a 
-                        // onClick={onRefresh}
                         href={preferencesLink}
                         className="flex mt-4 px-6 py-2.5 text-white bg-[#080E1E] rounded-full justify-center w-fit"
                     >

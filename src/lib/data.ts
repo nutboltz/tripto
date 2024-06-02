@@ -11,13 +11,13 @@ export const tripData = [
     //     inputType: "date",
     //     placeholder: "08/11/2024"
     // },
+    // {
+    //     title: "Departure",
+    //     inputType: "date",
+    //     placeholder: "08/20/2024"
+    // },
     {
-        title: "Departure",
-        inputType: "date",
-        placeholder: "08/20/2024"
-    },
-    {
-        title: "Invite friends",
+        title: "Travellers' emails (including yourself)",
         inputType: "invite",
         placeholder: "johndoe@gmail.com"
     },

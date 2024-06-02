@@ -117,7 +117,7 @@ export default function CreateTripForm(props: CreateTripFormProps) {
                                 value={inputValues[item.title] || ''}
                                 placeholder={item.placeholder}
                                 onChange={(e) => handleInputChange(item.title, e.target.value)}
-                                className="text-gray-900 text-sm border-silverBlue-2 border border-black rounded px-2.5 py-2 focus:outline-none focus:ring-0 w-2/3"
+                                className="text-gray-900 text-sm border border-black rounded px-2.5 py-2 focus:outline-none focus:ring-0 w-2/3"
                             />
                         }
                         {item.inputType === "date" &&
@@ -128,7 +128,7 @@ export default function CreateTripForm(props: CreateTripFormProps) {
                                 value={inputValues[item.title] || ''}
                                 placeholder={item.placeholder}
                                 onChange={(e) => handleInputChange(item.title, e.target.value)}
-                                className="text-gray-900 text-sm border-silverBlue-2 border border-black rounded px-2.5 py-2 focus:outline-none focus:ring-0 w-2/3"
+                                className="text-gray-900 text-sm border border-black rounded px-2.5 py-2 focus:outline-none focus:ring-0 w-2/3"
                             />
                         }
                         {item.inputType === "invite" && 
@@ -140,7 +140,7 @@ export default function CreateTripForm(props: CreateTripFormProps) {
                                     value={inputValues[item.title] || ''}
                                     placeholder={item.placeholder}
                                     onChange={(e) => handleInputChange(item.title, e.target.value)}
-                                    className="text-gray-900 text-sm border-silverBlue-2 border border-black rounded px-2.5 py-2 focus:outline-none focus:ring-0 w-full"
+                                    className="text-gray-900 text-sm border border-black rounded px-2.5 py-2 focus:outline-none focus:ring-0 w-full"
                                 />
                                 {/* <button onClick={handleInvite} className="flex px-6 text-white bg-[#0267FF] rounded justify-center items-center">
                                     Invite

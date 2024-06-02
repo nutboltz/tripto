@@ -28,19 +28,14 @@ export const tripDetails = [
         placeholder: "johndoe@gmail.com"
     },
     {
-        title: "Minimum budget",
-        inputType: "text",
-        placeholder: "$500"
-    },
-    {
-        title: "Maximum budget",
+        title: "Budget",
         inputType: "text",
         placeholder: "$1000"
     },
     {
         title: "List activities you're interested in",
         inputType: "textArea",
-        placeholder: "Snorkling"
+        placeholder: "Snorkling at Playa del Carmen"
     },
     {
         title: "List restaurants you're excited to try",
@@ -54,16 +49,15 @@ export const tripDetails = [
         options:["Night", "Day"]
     },
     {
-        title: "Do you have any dietary preferences?",
-        inputType: "dropdown",
-        placeholder: "Vegan",
-        options:["Night", "Day"]
-    },
-    {
         title: "How would you like to travel?",
         inputType: "dropdown",
         placeholder: "Rental car",
         options:["Rental car", "Public transportation", "Taxi"]
+    },
+    {
+        title: "Do you have any dietary preferences?",
+        inputType: "text",
+        placeholder: "Vegan",
     },
     {
         title: "What is your vibe for the trip?",
@@ -72,7 +66,7 @@ export const tripDetails = [
     },
     {
         title: "Anything else you would like to do?",
-        inputType: "text",
+        inputType: "textArea",
         placeholder: "Hiking"
     },
 ]

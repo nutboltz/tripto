@@ -13,13 +13,6 @@ export default async function handler(
   const prisma = getPrismaClient();
   const id = "demo"
 
-  // delete any existing trip with demo id
-  await prisma.trip.delete({
-    where: {
-      id
-    }
-  });
-
   const trip = await prisma.trip.upsert({
     where: {
       id

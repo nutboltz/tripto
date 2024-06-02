@@ -33,7 +33,7 @@ export default function Preferences() {
               width={46}
               height={46}
             />
-            <div className="font-semibold text-2xl z-10">trippin'</div>
+            <div className="font-semibold text-2xl z-10">trippin&apos;</div>
         </div>
           <div className="py-10 px-10 flex flex-col gap-10">
           <h1 className="font-semibold text-4xl z-10">Your preferences</h1>

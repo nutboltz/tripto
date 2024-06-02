@@ -10,16 +10,19 @@ import ItineraryTimeline from '@/components/itineraryTimeline';
 import Image from 'next/image';
 import { Loader2 } from 'lucide-react';
 import { useRouter } from 'next/router';
+import { itineraryUpdated } from '@/lib/data';
+import { it } from 'node:test';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export async function getServerSideProps({ params } : { params: { tripId: string }}) {
     const trip = await fetchTrip(params.tripId);
-    const itineraryStatus = await getItineraryStatus(trip);
+    // const itineraryStatus = await getItineraryStatus(trip);
+    const newItinerary = itineraryUpdated
     const preferencesLink = `${getBaseUrl()}/trip/${params.tripId}/preferences`
     return { props: { 
         trip,
-        itineraryStatus,
+        itinerary: newItinerary,
         preferencesLink,
      } };
 }
@@ -27,37 +30,15 @@ export async function getServerSideProps({ params } : { params: { tripId: string
 
 interface TripProps {
     trip: Trip & { participants: User[], tripPreferences: TripPreferences[] };
-    itineraryStatus: ItineraryStatus;
-    preferencesLink: string;
+    itinerary: Itinerary
 }
 
 
-export default function TripPage(props: TripProps) {
+export default function TripTwoPage(props: TripProps) {
 
     const router = useRouter();
-    const { trip, itineraryStatus, preferencesLink } = props;
-    const [itinerary, setItinerary] = useState<Itinerary>();
-    const [refreshing, setRefreshing] = useState(true);
-
-    useEffect(() => {
-        if (itineraryStatus.ready) {
-            setRefreshing(true);
-            axios.get(getBaseUrl()+ '/api/getTripItinerary',
-            {
-                params: {
-                    tripId: trip.id,
-                }
-            }
-            ).then(res => {
-                // delay 2 seconds
-                setTimeout(() => {
-                    setRefreshing(false);
-                }, 2000);
-
-                setItinerary(res.data.itinerary);
-            })
-        }
-    }, [itineraryStatus]);
+    const { trip, itinerary } = props;
+    const [refreshing, setRefreshing] = useState(false);
 
   return (
     <>
@@ -67,32 +48,21 @@ export default function TripPage(props: TripProps) {
         <div className="flex gap-4 items-center">
             <Image
               src="/logo.png"
-              alt="trippin' logo"
+              alt="Description of my image"
               width={46}
               height={46}
             />
             <div className="font-semibold text-2xl z-10">trippin&apos;</div>
         </div>
         <div className="py-10 px-24 flex flex-col gap-10">
-            { itineraryStatus.ready &&
+            { itinerary &&
                 <div>
                     <h1 className="font-semibold text-4xl">Trip to</h1>
                     <h1 className="font-semibold text-4xl text-gray-400">{trip.destination}</h1>
                 </div>
             }
             <div className="z-10">
-            { !itineraryStatus.ready ? 
-                <div className='flex flex-col gap-4 justify-center items-center pt-28'>
-                    <h1 className="text-4xl font-semibold max-w-lg text-center">Get ready for your trip to {trip.destination}</h1>
-                    <p className="text-2xl text-[#8B8B8B] max-w-2xl text-center">We will email you the once everyone has completed their form and your itinerary is ready.</p>
-                    <a 
-                        href={preferencesLink}
-                        className="flex mt-4 px-6 py-2.5 text-white bg-[#080E1E] rounded-full justify-center w-fit"
-                    >
-                        Set preferences
-                    </a>
-                
-                </div> : refreshing ?
+            { refreshing ?
                 <Loader2 className="animate-spin w-10 h-10"/> : itinerary ?
                 <ItineraryTimeline tripId={trip.id} itinerary={itinerary}/> : null
             }

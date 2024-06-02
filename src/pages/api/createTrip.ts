@@ -30,14 +30,17 @@ export default async function handler(
           };
       })
       },
-      itinerary: itineraryPlaceholder,
+      tripPreferences: {
+        deleteMany: {},
+      },
+      itinerary: {},
     },
     create: {
       id,
       destination,
       startDate: new Date(startDate),
       endDate: new Date(endDate),
-      itinerary: itineraryPlaceholder,
+      itinerary: {},
       participants: {
         connectOrCreate: participants.map((email: string) => {
           return {

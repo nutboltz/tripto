@@ -28,19 +28,14 @@ export const tripDetails = [
         placeholder: "johndoe@gmail.com"
     },
     {
-        title: "Minimum budget",
-        inputType: "text",
-        placeholder: "$500"
-    },
-    {
-        title: "Maximum budget",
+        title: "Budget",
         inputType: "text",
         placeholder: "$1000"
     },
     {
         title: "List activities you're interested in",
         inputType: "textArea",
-        placeholder: "Snorkling"
+        placeholder: "Snorkling at Playa del Carmen"
     },
     {
         title: "List restaurants you're excited to try",

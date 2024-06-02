@@ -49,24 +49,27 @@ export default function TripPage(props: TripProps) {
 
   return (
     <>
-        <div className={`py-20 px-32 flex flex-col gap-10 relative ${inter.className}`}>
+        <div className={`py-10 px-10 flex flex-col gap-10 relative ${inter.className}`}>
         <div className="bg-[#D5AEE4] opacity-15 absolute -top-[10rem] -right-[10rem] h-[40rem] w-[40rem] rounded-full blur-[7rem] z-0"></div>
         <div className="bg-[#AEC7E4] opacity-15 absolute top-[20rem] -left-[10rem] h-[75rem] w-[75rem] rounded-full blur-[7rem] z-0"></div>
-        <div>
-            <h1 className="font-semibold text-4xl">Trip to</h1>
-            <h1 className="font-semibold text-4xl text-gray-400">{trip.destination}</h1>
-        </div>
-        <div className="z-10">
-        { !itineraryStatus.ready ? 
+        <div className="font-semibold text-2xl z-10">tripto</div>
+        <div className="py-10 px-24 flex flex-col gap-10">
             <div>
-                <h1>Waiting on all participants to submit their preferences</h1>
-                <p>Participants: {itineraryStatus.tripParticipants.join(', ')}</p>
-                <p>Submitted Participants: {itineraryStatus.submittedParticipants.join(', ')}</p>
-                <p>Link to submit preferences: </p>
-                <a href={preferencesLink}>{preferencesLink}</a>
-            </div> : itinerary ?
-            <ItineraryTimeline itinerary={itinerary}/> : null
-        }
+                <h1 className="font-semibold text-4xl">Trip to</h1>
+                <h1 className="font-semibold text-4xl text-gray-400">{trip.destination}</h1>
+            </div>
+            <div className="z-10">
+            { !itineraryStatus.ready ? 
+                <div>
+                    <h1>Waiting on all participants to submit their preferences</h1>
+                    <p>Participants: {itineraryStatus.tripParticipants.join(', ')}</p>
+                    <p>Submitted Participants: {itineraryStatus.submittedParticipants.join(', ')}</p>
+                    <p>Link to submit preferences: </p>
+                    <a href={preferencesLink}>{preferencesLink}</a>
+                </div> : itinerary ?
+                <ItineraryTimeline itinerary={itinerary}/> : null
+            }
+            </div>
         </div>
       </div>
     </>

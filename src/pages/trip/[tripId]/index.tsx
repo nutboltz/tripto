@@ -4,23 +4,24 @@ import { fetchItineraryStatus } from '@/server/itinerary';
 
 export async function getServerSideProps({ params } : { params: { tripId: string }}) {
     const itineraryStatus = await fetchItineraryStatus(params.tripId);
-    // const itinerary = await fetchItinerary(params.tripId);
     return { props: { 
         itineraryStatus,
-        // itinerary
      } };
 }
 
 
 interface TripProps {
     itineraryStatus: ItineraryStatus;
-    itinerary: any;
 }
 
 
 export default function Trip(props: TripProps) {
 
-    const { itineraryStatus, itinerary } = props;
+    const { itineraryStatus } = props;
+
+    if (itineraryStatus.ready) {
+        // get itinerary
+    }
 
 
     // Get Itinerary
@@ -34,7 +35,7 @@ export default function Trip(props: TripProps) {
         <p>Participants: {itineraryStatus.tripParticipants.join(', ')}</p>
         <p>Submitted Participants: {itineraryStatus.submittedParticipants.join(', ')}</p>
     </div> : 
-        <h1>Here is your itinerary : {itinerary} </h1>
+        <h1>Here is your itinerary :  </h1>
     }
     </>
   );

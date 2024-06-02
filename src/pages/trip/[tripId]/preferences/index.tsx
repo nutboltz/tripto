@@ -2,35 +2,22 @@
 import Image from "next/image";
 import axios from 'axios'
 import { useState } from "react";
+import TripDetailsForm from "@/components/TripDetailsFrom";
+import { useRouter } from "next/router";
 
-export default function Home() {
+export default function Preferences() {
+  const router = useRouter()
+  const tripId = router.query.tripId as string
 
-  const [submissionStatus, setSubmissionStatus] = useState("Not Submitted")
-
-  const tripId = "2a785fc2-0509-434c-9c37-c256148c6c86"
-  const email = "eunicehx920@gmail.com"
-  const activities = ["hiking", "museum", "restaurant"]
-  const preferences = { isMorningPerson: false, isFoodie: true, preferredActivities: activities }
-
-  const handleClick = () => {
-    axios.post(process.env.NEXT_PUBLIC_BASE_URL+ '/api/submitTripPreference',
-    {
-        tripId,
-        userEmail: email,
-        preferences,
-    }
-    ).then(res => {
-      const { tripId } = res.data
-      setSubmissionStatus("Submitted")
-    })
+  const onSubmit = () => {
+    router.push(`/trip/${tripId}`)
   }
 
   return (
-    <>
-      <button onClick={handleClick}>
-        Submit Preferences
-      </button>
-      <p>Submission Status: {submissionStatus}</p>
-    </>
+    <main>
+      <div className="flex gap-16">
+        {tripId ? < TripDetailsForm tripId={tripId} onSubmit={onSubmit}/> : <h1>404 - Page Not Found</h1>}
+      </div>
+    </main>
   );
 }

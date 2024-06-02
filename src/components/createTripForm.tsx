@@ -25,6 +25,15 @@ export default function CreateTripForm(props: CreateTripFormProps) {
         }));
     };
 
+    const addDemoData = () => {
+        setInputValues({
+            "destination": "San Diego, California",
+            "arrival": "08/11/2024",
+            "departure": "08/20/2024",
+            "Travellers' emails (including yourself)": "eunicehx920@gmail.com, moosemunch7190@gmail.com"
+        });
+    };
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const travellersEmails = inputValues["Travellers' emails (including yourself)"].split(',').map(email => email.trim());
@@ -52,6 +61,9 @@ export default function CreateTripForm(props: CreateTripFormProps) {
 
     return (
         <div>
+            <button onClick={addDemoData} className="text-xs flex text-black rounded-full justify-center hover:underline hover:text-gray-500 m-0 p-0">
+                Add Demo Data
+            </button>
             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                 <div className="flex flex-col gap-6">
                     <div className="flex flex-col gap-1">

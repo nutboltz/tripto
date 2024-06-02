@@ -125,7 +125,23 @@ export default function TripDetailsForm(props: TripDetailsFormProps) {
         // parse links
     }
 
+    const addDemoData = () => {
+        setInputValues({
+            "Your email": "eunicehx920@gmail.com",
+            "Budget": "1000",
+            "List activities or restaurants you're interested in": "Bars, food",
+            "Are you a morning or night person?": "Night",
+            "How would you like to travel?" : "Rental car",
+            "Do you have any dietary preferences?": "No",
+            "What is your vibe for the trip?": "Chill",
+        });
+    };
+
     return (
+        <>
+        <button onClick={addDemoData} className="text-xs flex text-black rounded-full justify-center hover:underline hover:text-gray-500 m-0 p-0">
+            Add Demo Data
+        </button>
         <div className="flex flex-row gap-6">
             <form onSubmit={handleSubmit} className="w-full grow-1 flex mr-4">
                 <div className='w-full'>
@@ -272,5 +288,6 @@ export default function TripDetailsForm(props: TripDetailsFormProps) {
 
             </div>
         </div>
+        </>
     );
 }

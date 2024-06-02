@@ -4,7 +4,7 @@ import { getBaseUrl } from '@/lib/utils';
 import { getItineraryStatus, fetchTrip } from '@/server/itinerary';
 import { Inter } from 'next/font/google';
 import { TripPreferences, User, Trip } from '@prisma/client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import ItineraryTimeline from '@/components/itineraryTimeline';
 
@@ -35,17 +35,19 @@ export default function TripPage(props: TripProps) {
 
     const [itinerary, setItinerary] = useState<Itinerary>();
 
-    if (itineraryStatus.ready) {
-        axios.get(getBaseUrl()+ '/api/getTripItinerary',
-        {
-            params: {
-                tripId: trip.id,
+    useEffect(() => {
+        if (itineraryStatus.ready) {
+            axios.get(getBaseUrl()+ '/api/getTripItinerary',
+            {
+                params: {
+                    tripId: trip.id,
+                }
             }
+            ).then(res => {
+                setItinerary(res.data.itinerary);
+            })
         }
-        ).then(res => {
-            setItinerary(res.data.itinerary);
-        })
-    }
+    }, [itineraryStatus]);
 
   return (
     <>

@@ -21,6 +21,7 @@ export default function TripDetailsForm(props: TripDetailsFormProps) {
     const data = tripDetails as tripDetailsType[];
 
     const [inputValues, setInputValues] = useState<{ [key: string]: string }>({});
+    const [dropdownVisible, setDropdownVisible] = useState<{ [key: string]: boolean }>({});
     const [links, setLinks] = useState('');
     const [activitiesFromLinks, setActivitiesFromLinks] = useState<ParsedActivity[]>([]);
     const [activitiesFromLinksError, setActivitiesFromLinksError] = useState<string>('');
@@ -31,6 +32,24 @@ export default function TripDetailsForm(props: TripDetailsFormProps) {
         setInputValues((prevValues) => ({
             ...prevValues,
             [id]: value,
+        }));
+    };
+
+    const handleDropdownChange = (id: string, value: string) => {
+        setInputValues((prevValues) => ({
+            ...prevValues,
+            [id]: value,
+        }));
+        setDropdownVisible((prevVisibility) => ({
+            ...prevVisibility,
+            [id]: false,
+        }));
+    };
+
+    const toggleDropdown = (id: string) => {
+        setDropdownVisible((prevVisibility) => ({
+            ...prevVisibility,
+            [id]: !prevVisibility[id],
         }));
     };
 
@@ -158,18 +177,46 @@ export default function TripDetailsForm(props: TripDetailsFormProps) {
 
                             }
                             {item.inputType === "dropdown" &&
-                                <select
-                                    id={item.title}
-                                    value={inputValues[item.title] || ''}
-                                    onChange={(e) => handleInputChange(item.title, e.target.value)}
-                                    className="text-gray-900 text-sm border border-black rounded px-2.5 py-2 focus:outline-none focus:ring-0 w-full"
+                                <div className="relative">
+                                <button
+                                    type="button"
+                                    onClick={() => toggleDropdown(item.title)}
+                                    className="inline-flex items-center justify-between w-full rounded-md border border-black shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
                                 >
-                                    {item.options?.map((option, index) => (
-                                        <option key={index} value={option}>
-                                            {option}
-                                        </option>
-                                    ))}
-                                </select>
+                                    {inputValues[item.title] || 'Select an option'}
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-3">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                    </svg>
+                                </button>
+                                {dropdownVisible[item.title] && (
+                                    <div className="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
+                                        <div className="py-1">
+                                            {item.options?.map((option, index) => (
+                                                <button
+                                                    key={index}
+                                                    type="button"
+                                                    className="block px-4 py-2 text-sm text-gray-700 w-full text-left"
+                                                    onClick={() => handleDropdownChange(item.title, option)}
+                                                >
+                                                    {option}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                                // <select
+                                //     id={item.title}
+                                //     value={inputValues[item.title] || ''}
+                                //     onChange={(e) => handleInputChange(item.title, e.target.value)}
+                                //     className="text-gray-900 text-sm border border-black rounded px-2.5 py-2 focus:outline-none focus:ring-0 w-full"
+                                // >
+                                //     {item.options?.map((option, index) => (
+                                //         <option key={index} value={option}>
+                                //             {option}
+                                //         </option>
+                                //     ))}
+                                // </select>
                             }
                         </li>
                     ))} 

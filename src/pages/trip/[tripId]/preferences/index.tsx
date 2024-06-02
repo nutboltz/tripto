@@ -2,7 +2,7 @@
 import Image from "next/image";
 import axios from 'axios'
 import { useState } from "react";
-import TripDetailsForm from "@/components/TripDetailsFrom";
+import TripDetailsForm from "@/components/TripDetailsForm";
 import { useRouter } from "next/router";
 import { Inter } from 'next/font/google';
 

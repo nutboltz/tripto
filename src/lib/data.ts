@@ -35,14 +35,9 @@ export const tripDetails = [
         placeholder: "$1000"
     },
     {
-        title: "List activities you're interested in",
+        title: "List activities or restaurants you're interested in",
         inputType: "textArea",
-        placeholder: "Snorkling at Playa del Carmen"
-    },
-    {
-        title: "List restaurants you're excited to try",
-        inputType: "textArea",
-        placeholder: "Bagatelle"
+        placeholder: "Snorkling at Playa del Carmen, Bagatelle"
     },
     {
         title: "Are you a morning or night person?",

@@ -5,7 +5,7 @@ import { parsedTikTokLinks, tripDetails } from '../lib/data';
 import { tripDetailsType } from '../interfaces/trip';
 import axios from 'axios';
 import { getBaseUrl } from '@/lib/utils';
-import { ParsedActivity } from '@/interfaces/itinerary';
+import { ParsedActivity, Preference } from '@/interfaces/itinerary';
 import ActivityCard from './ActivityCard';
 import { Loader2, TextSearch } from 'lucide-react';
 
@@ -24,7 +24,8 @@ export default function TripDetailsForm(props: TripDetailsFormProps) {
     const [links, setLinks] = useState('');
     const [activitiesFromLinks, setActivitiesFromLinks] = useState<ParsedActivity[]>([]);
     const [activitiesFromLinksError, setActivitiesFromLinksError] = useState<string>('');
-    const [isParsing, setIsParsing] = useState(false);  
+    const [isParsing, setIsParsing] = useState(false);
+    const [selectedActivities, setSelectedActivities] = useState<ParsedActivity[]>([]);
 
     const handleInputChange = (id: string, value: string) => {
         setInputValues((prevValues) => ({
@@ -33,15 +34,28 @@ export default function TripDetailsForm(props: TripDetailsFormProps) {
         }));
     };
 
+    const handleSelect = (activity: ParsedActivity) => {
+        setSelectedActivities((prevSelected) =>
+          prevSelected.includes(activity)
+            ? prevSelected.filter((a) => a !== activity)
+            : [...prevSelected, activity]
+        );
+      };
+
+    const handleUnselect = (activity: ParsedActivity) => {
+        setSelectedActivities((prevSelected) => prevSelected.filter((a) => a !== activity));
+    };
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(inputValues);
+
+        const finalPref = { ...inputValues, additonalActivities: selectedActivities.map((activity) => activity.title) };
 
         axios.post(getBaseUrl()+ '/api/submitTripPreference',
         {
             tripId,
-            userEmail: inputValues.email,
-            preferences: inputValues["activities you'd like do"]
+            userEmail: inputValues["Your email"],
+            preferences: finalPref
         }
         ).then(res => {
             onSubmit();
@@ -114,6 +128,8 @@ export default function TripDetailsForm(props: TripDetailsFormProps) {
                                 />
                             }
                             {item.inputType === "textArea" &&
+                            <>
+                                <p className="text-xs text-gray-500">Separate each activity with a comma</p>
                                 <textarea
                                     name={item.title}
                                     id={item.title}
@@ -123,6 +139,23 @@ export default function TripDetailsForm(props: TripDetailsFormProps) {
                                     onChange={(e) => handleInputChange(item.title, e.target.value)}
                                     className="text-gray-900 text-sm border-black border rounded px-2.5 py-2 focus:outline-none focus:ring-0 w-full"
                                 />
+                                {item.title === "List activities or restaurants you're interested in" ? (
+                                    <>
+                                    <p className="text-xs text-gray-500 mt-2 mb-1">Activities from external sources</p>
+                                    {
+                                        (selectedActivities.length > 0) ? (
+                                            <div className="flex flex-row gap-x-2 flex-wrap gap-y-2 cursor-pointer">
+                                                {selectedActivities.map((activity, index) => (
+                                                    <div key={index} onClick={() => handleUnselect(activity)} className='text-xs bg-gray-200 w-fit rounded-full px-4 py-2'>
+                                                        {activity.title}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        ): null}
+                                    </>
+                                ) : null}
+                            </>
+
                             }
                             {item.inputType === "dropdown" &&
                                 <select
@@ -172,7 +205,16 @@ export default function TripDetailsForm(props: TripDetailsFormProps) {
                             <div className='grid grid-cols-2 gap-x-4 gap-y-4'>
                                 {activitiesFromLinks.map((activity, index) => (
                                     <div key={index} className='h-48'>
-                                        <ActivityCard imageSrc={activity.imageSrc} title={activity.title} location={activity.location} rating={activity.rating || 0} category={activity.category} key={index} />
+                                        <ActivityCard
+                                            key={index}
+                                            imageSrc={activity.imageSrc}
+                                            title={activity.title}
+                                            location={activity.location}
+                                            rating={activity.rating || 0}
+                                            category={activity.category}
+                                            selected={selectedActivities.includes(activity)}
+                                            onSelect={() => handleSelect(activity)}
+                                        />
                                     </div>
                                 ))}
                             </div>

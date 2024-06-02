@@ -28,10 +28,16 @@ export default function ItineraryTimeline(props: ItineraryProps) {
                                     <h3 className="text-3xl font-semibold text-[#080E1E]">{activity.title}</h3>
                                     <div className="flex gap-2 items-center">
                                         <p className="text-[#0267FF]">{activity.duration} hours</p>
-                                        {/* <div className="w-2 h-2 bg-[#FF4646] rounded-full"></div> */}
-                                        {/* <p className="text-[#FF4646]">{activity.duration} Needs Reservation</p> */}
+                                        {activity.needsTicket === true &&
+                                            <div className="flex gap-2 items-center">
+                                                <div className="w-2 h-2 bg-[#FF4646] rounded-full"></div>
+                                                <p className="text-[#FF4646]">{activity.duration} Needs Reservation</p>
+                                            </div>
+                                        }
                                     </div>
-                                    {/* <button className="bg-[#0267FF] text-white py-2 rounded w-32">Book</button> */}
+                                    {activity.needsReservation === true &&
+                                        <button className="bg-[#0267FF] text-white py-2 rounded w-32">Book</button>
+                                    }
                                 </div>
                                 <div className="flex-shrink-0 ml-auto flex items-center space-x-2">
                                     <button className="text-[#979797] px-2 py-1 rounded-full">

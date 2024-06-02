@@ -1,10 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { tripData } from '../lib/data'; 
-import { createTripType } from '../lib/types';
+import { tripData } from '../lib/data';
+import { createTripType } from '../interfaces/trip';
+import axios from 'axios';
+import { getBaseUrl } from '@/lib/utils';
 
-export default function CreateTripForm() {
+interface CreateTripFormProps {
+    onSubmit: (tripId: string) => void;
+}
+
+export default function CreateTripForm(props: CreateTripFormProps) {
+    const  { onSubmit } = props;
+    
     const data = tripData as createTripType[];
 
     // State to track input values for each item
@@ -19,10 +27,17 @@ export default function CreateTripForm() {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        // input endpoint call
-        
         console.log(inputValues);
+        axios.post(getBaseUrl()+ '/api/createTrip',
+        {
+          destination: inputValues.location,
+          startDate: inputValues["start date"],
+          endDate: inputValues["end date"],
+          participants: inputValues["participants email"].split(',').map(email => email.trim())
+        }
+        ).then(res => {
+            onSubmit(res.data.tripId);
+        })
     };
 
     return (

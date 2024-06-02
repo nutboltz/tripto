@@ -1,10 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { tripDetails } from '../lib/data'; // Importing the actual data
-import { tripDetailsType } from '../lib/types';
+import { tripDetails } from '../lib/data';
+import { tripDetailsType } from '../interfaces/trip';
+import axios from 'axios';
+import { getBaseUrl } from '@/lib/utils';
 
-export default function TripDetailsForm() {
+interface TripDetailsFormProps {
+    tripId: string;
+    onSubmit: () => void;
+}
+
+export default function TripDetailsForm(props: TripDetailsFormProps) {
+    const { tripId, onSubmit } = props;
 
     const data = tripDetails as tripDetailsType[];
 
@@ -19,10 +27,18 @@ export default function TripDetailsForm() {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        
-        //API endpoint call 
-
         console.log(inputValues);
+
+        axios.post(getBaseUrl()+ '/api/submitTripPreference',
+        {
+            tripId,
+            userEmail: inputValues.email,
+            preferences: inputValues["activities you'd like do"]
+        }
+        ).then(res => {
+            onSubmit();
+        })
+        
     };
 
     return (

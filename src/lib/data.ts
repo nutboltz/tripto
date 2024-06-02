@@ -4,16 +4,24 @@ export const tripData = [
         inputType: "text",
     },
     {
-        title: "group size",
+        title: "participants email",
         inputType: "text",
     },
     {
-        title: "date of travel",
+        title: "start date",
+        inputType: "date",
+    },
+    {
+        title: "end date",
         inputType: "date",
     },
 ]
 
 export const tripDetails = [
+    {
+        title: "email",
+        inputType: "text",
+    },
     {
         title: "budget",
         inputType: "text",

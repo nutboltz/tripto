@@ -11,6 +11,8 @@ export interface Itinerary {
 export interface ItineraryItem {
     title: string;
     duration: number;
+    needsTicket: boolean;
+    needsReservation: boolean;
 }
 
 export interface Preference {

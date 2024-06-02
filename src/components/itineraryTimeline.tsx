@@ -11,6 +11,7 @@ export default function ItineraryTimeline(props: ItineraryProps) {
     const  { itinerary } = props;
 
     return (
+        <div>
         <div className="flex flex-col items-center">
             {Object.keys(itinerary).map((day, dayIndex) => { console.log(day); return (
                 <div key={dayIndex} className="w-full">
@@ -28,10 +29,16 @@ export default function ItineraryTimeline(props: ItineraryProps) {
                                     <h3 className="text-3xl font-semibold text-[#080E1E]">{activity.title}</h3>
                                     <div className="flex gap-2 items-center">
                                         <p className="text-[#0267FF]">{activity.duration} hours</p>
-                                        {/* <div className="w-2 h-2 bg-[#FF4646] rounded-full"></div> */}
-                                        {/* <p className="text-[#FF4646]">{activity.duration} Needs Reservation</p> */}
+                                        {activity.needsTicket === true &&
+                                            <div className="flex gap-2 items-center">
+                                                <div className="w-2 h-2 bg-[#FF4646] rounded-full"></div>
+                                                <p className="text-[#FF4646]">{activity.duration} Needs Reservation</p>
+                                            </div>
+                                        }
                                     </div>
-                                    {/* <button className="bg-[#0267FF] text-white py-2 rounded w-32">Book</button> */}
+                                    {activity.needsReservation === true &&
+                                        <button className="bg-[#0267FF] text-white py-2 rounded w-32">Book</button>
+                                    }
                                 </div>
                                 <div className="flex-shrink-0 ml-auto flex items-center space-x-2">
                                     <button className="text-[#979797] px-2 py-1 rounded-full">
@@ -48,6 +55,27 @@ export default function ItineraryTimeline(props: ItineraryProps) {
                     </div>
                 </div>
             )})}
+        </div>
+        <div className="py-4 pl-16 pr-4">
+                <div className="flex flex-col gap-2 w-full justify-start">
+                    <label htmlFor="itinerary-updates" className="text-sm">
+                        Anything else you would like to add?
+                    </label>
+                    <input
+                        name="itinerary-updates"
+                        id="itinerary-updates"
+                        type="text"
+                        value=""
+                        // placeholder="Cancun, Mexico"
+                        onChange={(e) => console.log(e.target.value)}
+                        className="text-gray-900 text-sm border border-black rounded px-2.5 py-2 focus:outline-none focus:ring-0 w-full"
+                    />
+                </div>
+                <div className="pt-8 flex gap-4">
+                    <button className="px-6 py-2.5 bg-[#080E1E] text-white rounded-full">Approve itinerary</button>
+                    <button className="px-6 py-2.5 bg-[#D6D6D6] text-black rounded-full">Submit updates</button>
+                </div>
+            </div>
         </div>
     );
 }

@@ -79,7 +79,7 @@ export const itineraryPlaceholder = {
             title: "Breakfast at Morning Glory (Little Italy)",
             duration: "1.5",
             type: "food",
-            needsTicket: false,
+            needsTicket: true,
             needsReservation: false,
         },
         {
@@ -100,7 +100,7 @@ export const itineraryPlaceholder = {
             title: " Lunch at Harney Sushi (Old Town)",
             duration: 1.5,
             type: "food",
-            needsTicket: false,
+            needsTicket: true,
             needsReservation: false,
         },
         {
@@ -193,7 +193,7 @@ export const itineraryPlaceholder = {
             title: "Brunch at Stratford Court Cafe (Del Mar)",
             duration: 1.5,
             type: "food",
-            needsTicket: false,
+            needsTicket: true,
             needsReservation: false,
         },
         {
@@ -259,7 +259,7 @@ export const itineraryPlaceholder = {
             title: "Lunch at Santa Gula (Gaslamp Quarter)",
             duration: 1.5,
             type: "food",
-            needsTicket: false,
+            needsTicket: true,
             needsReservation: false,
         },
         {
@@ -287,7 +287,7 @@ export const itineraryPlaceholder = {
             title: "Early dinner at Awash Ethiopian Restaurant (North Park)",
             duration: 1.5,
             type: "food",
-            needsTicket: false,
+            needsTicket: true,
             needsReservation: true,
         },
         {

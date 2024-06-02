@@ -53,13 +53,13 @@ export default function CreateTripForm(props: CreateTripFormProps) {
                             id={`input-${item.title}`}
                             type="text"
                             value={inputValues[item.title] || ''}
-                            placeholder={`Enter ${item.title}`}
+                            placeholder={item.placeholder}
                             onChange={(e) => handleInputChange(item.title, e.target.value)}
                             className="text-gray-900 text-sm border-silverBlue-2 border block px-2.5 py-2 focus:outline-none focus:ring-0 w-full"
                         />
                     </div>
                 ))}
-                <button type="submit">Submit</button>
+                <button type="submit">Next</button>
             </form>
         </div>
     );

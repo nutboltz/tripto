@@ -49,6 +49,18 @@ export default function TripPage(props: TripProps) {
         }
     }, [itineraryStatus]);
 
+    const onRefresh = () => {
+        axios.get(getBaseUrl()+ '/api/generateItinerary',
+        {
+            params: {
+                tripId: trip.id,
+            }
+        }
+        ).then(res => {
+            setItinerary(res.data.itinerary);
+        })
+    }
+
   return (
     <>
         <div className={`py-10 px-10 flex flex-col gap-10 relative ${inter.className}`}>
@@ -62,12 +74,17 @@ export default function TripPage(props: TripProps) {
             </div>
             <div className="z-10">
             { !itineraryStatus.ready ? 
-                <div>
+                <div className='flex flex-col'>
                     <h1>Waiting on all participants to submit their preferences</h1>
                     <p>Participants: {itineraryStatus.tripParticipants.join(', ')}</p>
                     <p>Submitted Participants: {itineraryStatus.submittedParticipants.join(', ')}</p>
                     <p>Link to submit preferences: </p>
                     <a href={preferencesLink}>{preferencesLink}</a>
+
+
+                    <button onClick={onRefresh}>
+                        Refresh
+                    </button>
                 </div> : itinerary ?
                 <ItineraryTimeline itinerary={itinerary}/> : null
             }

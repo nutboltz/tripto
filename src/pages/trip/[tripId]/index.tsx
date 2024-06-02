@@ -70,7 +70,7 @@ export default function TripPage(props: TripProps) {
         <div className="flex gap-4 items-center">
             <Image
               src="/logo.png"
-              alt="Description of my image"
+              alt="trippin' logo"
               width={46}
               height={46}
             />

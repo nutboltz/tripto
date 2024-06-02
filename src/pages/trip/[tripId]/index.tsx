@@ -74,17 +74,20 @@ export default function TripPage(props: TripProps) {
             </div>
             <div className="z-10">
             { !itineraryStatus.ready ? 
-                <div className='flex flex-col'>
-                    <h1>Waiting on all participants to submit their preferences</h1>
-                    <p>Participants: {itineraryStatus.tripParticipants.join(', ')}</p>
-                    <p>Submitted Participants: {itineraryStatus.submittedParticipants.join(', ')}</p>
-                    <p>Link to submit preferences: </p>
-                    <a href={preferencesLink}>{preferencesLink}</a>
+                <div className='flex flex-col gap-4'>
+                    <h1 className="text-2xl font-semibold">Waiting on all participants to submit their preferences</h1>
+                    <p className="font-semibold">All participants: <span className="font-normal">{itineraryStatus.tripParticipants.join(', ')}</span></p>
+                    <p className="font-semibold">Participants that have submitted: <span className="font-normal">{itineraryStatus.submittedParticipants.length > 0 ? itineraryStatus.submittedParticipants.join(', ') : 'None'}</span></p>
+                    <p className="font-semibold">Link to submit preferences: <span className="font-normal"><a href={preferencesLink}>{preferencesLink}</a></span></p>
 
 
-                    <button onClick={onRefresh}>
+                    <button 
+                        onClick={onRefresh}
+                        className="flex mt-4 px-6 py-2.5 w-40 text-white bg-[#080E1E] rounded-full justify-center"
+                    >
                         Refresh
                     </button>
+                
                 </div> : itinerary ?
                 <ItineraryTimeline itinerary={itinerary}/> : null
             }

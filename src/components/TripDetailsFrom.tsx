@@ -57,7 +57,7 @@ export default function TripDetailsForm(props: TripDetailsFormProps) {
                                 value={inputValues[item.title] || ''}
                                 placeholder={`Enter ${item.title}`}
                                 onChange={(e) => handleInputChange(item.title, e.target.value)}
-                                className="text-gray-900 text-sm border-silverBlue-2 border block px-2.5 py-2 focus:outline-none focus:ring-0 w-full"
+                                className="text-gray-900 text-sm border-black border block px-2.5 py-2 focus:outline-none focus:ring-0 w-full"
                             />
                         }
                         {item.inputType === "textArea" &&
@@ -68,20 +68,23 @@ export default function TripDetailsForm(props: TripDetailsFormProps) {
                                 value={inputValues[item.title] || ''}
                                 placeholder={`Enter ${item.title}`}
                                 onChange={(e) => handleInputChange(item.title, e.target.value)}
-                                className="text-gray-900 text-sm border-silverBlue-2 border block px-2.5 py-2 focus:outline-none focus:ring-0 w-full"
+                                className="text-gray-900 text-sm border-black border px-2.5 py-2 focus:outline-none focus:ring-0 w-full"
                             />
                         }
-                        {/* {item.inputType === "dropdown" &&
-                            <input
-                                name={item.title}
+                        {item.inputType === "dropdown" &&
+                            <select
                                 id={item.title}
-                                type="text"
                                 value={inputValues[item.title] || ''}
-                                placeholder={`Enter ${item.title}`}
                                 onChange={(e) => handleInputChange(item.title, e.target.value)}
-                                className="text-gray-900 text-sm border-silverBlue-2 border block px-2.5 py-2 focus:outline-none focus:ring-0 w-full"
-                            />
-                        } */}
+                                className="text-gray-900 text-sm border border-black rounded px-2.5 py-2 focus:outline-none focus:ring-0 w-2/3"
+                            >
+                                {item.options?.map((option, index) => (
+                                    <option key={index} value={option}>
+                                        {option}
+                                    </option>
+                                ))}
+                            </select>
+                        }
                     </div>
                 ))}
                 <button type="submit">Submit</button>

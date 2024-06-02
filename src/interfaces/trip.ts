@@ -7,5 +7,5 @@ export type createTripType = {
 export type tripDetailsType = {
     title: string;
     inputType: string;
-    radio?: string[];
+    options?: string[];
 }

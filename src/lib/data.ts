@@ -49,18 +49,21 @@ export const tripDetails = [
     },
     {
         title: "Are you a morning or night person?",
-        inputType: "text",
-        placeholder: "Night"
+        inputType: "dropdown",
+        placeholder: "Night",
+        options:["Night", "Day"]
     },
     {
         title: "Do you have any dietary preferences?",
-        inputType: "text",
-        placeholder: "Vegan"
+        inputType: "dropdown",
+        placeholder: "Vegan",
+        options:["Night", "Day"]
     },
     {
         title: "How would you like to travel?",
-        inputType: "text",
-        placeholder: "Rental Car"
+        inputType: "dropdown",
+        placeholder: "Rental car",
+        options:["Rental car", "Public transportation", "Taxi"]
     },
     {
         title: "What is your vibe for the trip?",

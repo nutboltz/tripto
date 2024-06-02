@@ -1,9 +1,9 @@
 import { Trip, TripPreferences, User } from "@prisma/client";
-import { ItineraryStatus } from "../interfaces/itinerary";
+import { ItineraryStatus, Preference } from "../interfaces/itinerary";
 import { openAiResponse } from "./lib/gpt/openai";
 import { getPrismaClient } from "./lib/prisma";
 import { itineraryPlaceholder } from "@/lib/data";
-import { start } from "repl";
+import { GENERATE_ITINERARY_PROMPT } from "@/server/lib/gpt/prompts";
 
 export const fetchTrip = async (tripId: string) => {
 
@@ -126,7 +126,38 @@ export const generateItinerary = async (tripId: string) => {
     const preferences = trip.tripPreferences.map(preference => preference.preferences)
 
     // Add itinary generation logic here
-    // const generateItineraryPrompt = GENERATE_ITINERARY_PROMPT(preferences)
+    // const preferencesForPrompt = trip.tripPreferences.map(tripPref => {
+    //     if (!tripPref) {
+    //         return null
+    //     }
+
+    //     if (!tripPref.preferences) {
+    //         return null
+    //     }
+
+    //     const prefObj = JSON.parse(tripPref.preferences as string) as Preference
+    //     return {
+    //         user: tripPref.userEmail,
+    //         activities: [],
+    //         isMorningPerson: prefObj.isMorningPerson,
+    //         dietaryPreferences: prefObj.dietaryPreference,
+    //         preferredFood: prefObj.food,
+    //     }
+
+    // }).filter(preference => preference !== null)
+
+    // const dontStartEarly = preferencesForPrompt.filter(preference => !preference.isMorningPerson)
+    // let startTime = 8
+    // if (dontStartEarly.length === preferencesForPrompt.length) {
+    //     startTime = 10
+    // }
+
+    // const destination = trip.destination || undefined
+
+
+    // const generateItineraryPrompt = GENERATE_ITINERARY_PROMPT(preferencesForPrompt, startTime, trip.startDate?.toDateString(), trip.endDate?.toDateString(), destination)
+
+    // console.log(generateItineraryPrompt)
 
     // const response = await openAiResponse(generateItineraryPrompt)
 

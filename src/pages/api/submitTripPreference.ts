@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getPrismaClient } from '../../server/lib/prisma'
-import { fetchItineraryStatus, generateItinerary } from '@/server/itinerary';
+import { getItineraryStatus, generateItinerary, fetchTrip } from '@/server/itinerary';
  
 export default async function handler(
   req: NextApiRequest,
@@ -29,7 +29,8 @@ export default async function handler(
     }
     });
 
-   const { ready } = await fetchItineraryStatus(tripId)
+  const trip = await fetchTrip(tripId);
+  const { ready } = await getItineraryStatus(trip);
 
    if (ready) {
     generateItinerary(tripId)

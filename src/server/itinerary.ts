@@ -2,8 +2,79 @@ import { Trip, TripPreferences, User } from "@prisma/client";
 import { ItineraryStatus } from "../interfaces/itinerary";
 import { openAiResponse } from "./lib/gpt/openai";
 import { getPrismaClient } from "./lib/prisma";
+import { itineraryPlaceholder } from "@/lib/data";
+import { start } from "repl";
 
 export const fetchTrip = async (tripId: string) => {
+
+    if (tripId === 'test') {
+        const mockUser = {
+            id: 'eunice',
+            name: 'Eunice Tan',
+            email: 'eunicehx920@gmail.com',
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            deletedAt: null,
+        } as User
+
+        const startDate = new Date()
+        const endDate = startDate.setDate(new Date().getDate() + 3)
+        const endDateDate = new Date(endDate)
+
+        return {
+            id: 'test',
+            destination: 'Cancun, Mexico',
+            participants: [mockUser],
+            tripPreferences: [],
+            deletedAt: null,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            startDate: startDate,
+            itinerary: null,
+            endDate: endDateDate,
+        } as Trip & { participants: User[], tripPreferences: TripPreferences[] }
+    }
+
+    // Trip that has completed preference
+    if (tripId === 'test2') {
+        const mockUser = {
+            id: 'eunice',
+            name: 'Eunice Tan',
+            email: 'eunicehx920@gmail.com',
+            deletedAt: null,
+            createdAt: new Date(),
+            updatedAt: new Date()
+        } as User
+
+        const mockTripPreference = {
+            id: 'test',
+            tripId: 'test2',
+            userEmail: 'eunicehx920@gmail.com',
+            preferences: { isMorningPerson: false },
+            deletedAt: null,
+            createdAt: new Date(),
+            updatedAt: new Date()
+        } as TripPreferences
+
+        const startDate = new Date()
+        const endDate = startDate.setDate(new Date().getDate() + 3)
+        const endDateDate = new Date(endDate)
+
+        return {
+            id: 'test2',
+            destination: 'Cancun, Mexico',
+            participants: [mockUser],
+            tripPreferences: [mockTripPreference],
+            deletedAt: null,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            itinerary: itineraryPlaceholder,
+            startDate: startDate,
+            endDate: endDateDate
+        } as Trip & { participants: User[], tripPreferences: TripPreferences[] }
+    }
+
+
     const prisma = getPrismaClient();
     const trip = await prisma.trip.findUnique({
         where: {

@@ -17,6 +17,9 @@ export default function TripDetailsForm(props: TripDetailsFormProps) {
     const data = tripDetails as tripDetailsType[];
 
     const [inputValues, setInputValues] = useState<{ [key: string]: string }>({});
+    const [linkOne, setLinkOne] = useState('');
+    const [linkTwo, setLinkTwo] = useState('');
+    const [linkThree, setLinkThree] = useState('');
 
     const handleInputChange = (id: string, value: string) => {
         setInputValues((prevValues) => ({
@@ -43,8 +46,8 @@ export default function TripDetailsForm(props: TripDetailsFormProps) {
 
     return (
         <div>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-                <div className="flex flex-col gap-6">
+            <form onSubmit={handleSubmit} className="flex gap-16">
+                <div className="flex flex-col gap-6 w-1/2">
                     {data.map((item, index) => (
                         <div key={index} className="flex flex-col gap-1">
                             <label htmlFor={item.title}>
@@ -58,7 +61,7 @@ export default function TripDetailsForm(props: TripDetailsFormProps) {
                                     value={inputValues[item.title] || ''}
                                     placeholder={item.placeholder}
                                     onChange={(e) => handleInputChange(item.title, e.target.value)}
-                                    className="text-gray-900 text-sm border-black border rounded px-2.5 py-2 focus:outline-none focus:ring-0 w-1/2"
+                                    className="text-gray-900 text-sm border-black border rounded px-2.5 py-2 focus:outline-none focus:ring-0 w-full"
                                 />
                             }
                             {item.inputType === "textArea" &&
@@ -69,7 +72,7 @@ export default function TripDetailsForm(props: TripDetailsFormProps) {
                                     value={inputValues[item.title] || ''}
                                     placeholder={item.placeholder}
                                     onChange={(e) => handleInputChange(item.title, e.target.value)}
-                                    className="text-gray-900 text-sm border-black border rounded px-2.5 py-2 focus:outline-none focus:ring-0 w-1/2"
+                                    className="text-gray-900 text-sm border-black border rounded px-2.5 py-2 focus:outline-none focus:ring-0 w-full"
                                 />
                             }
                             {item.inputType === "dropdown" &&
@@ -77,7 +80,7 @@ export default function TripDetailsForm(props: TripDetailsFormProps) {
                                     id={item.title}
                                     value={inputValues[item.title] || ''}
                                     onChange={(e) => handleInputChange(item.title, e.target.value)}
-                                    className="text-gray-900 text-sm border border-black rounded px-2.5 py-2 focus:outline-none focus:ring-0 w-1/2"
+                                    className="text-gray-900 text-sm border border-black rounded px-2.5 py-2 focus:outline-none focus:ring-0 w-full"
                                 >
                                     {item.options?.map((option, index) => (
                                         <option key={index} value={option}>
@@ -94,6 +97,46 @@ export default function TripDetailsForm(props: TripDetailsFormProps) {
                     >
                         Submit
                     </button>
+                </div>
+                <div className="flex flex-col gap-6 bg-white p-8 shadow rounded h-fit">
+                    <h2 className="text-2xl font-semibold">Add links from social</h2>
+                    <p>Have links that you would like to include in your itinarary?</p>
+                    <div className="flex gap-4">
+                        <input
+                            name="link-one"
+                            id="link-one"
+                            type="text"
+                            value=""
+                            placeholder="https://www.tiktok.com/@visitcancun"
+                            onChange={(e) => setLinkOne(e.target.value)}
+                            className="text-gray-900 text-sm border-silverBlue-2 border border-black rounded px-2.5 py-2 focus:outline-none focus:ring-0 w-80"
+                        />
+                        <button className="w-20 rounded text-white bg-[#0267FF]">Add</button>
+                    </div>
+                    <div className="flex gap-4">
+                        <input
+                            name="link-one"
+                            id="link-one"
+                            type="text"
+                            value=""
+                            placeholder="https://www.tiktok.com/@visitcancun"
+                            onChange={(e) => setLinkOne(e.target.value)}
+                            className="text-gray-900 text-sm border-silverBlue-2 border border-black rounded px-2.5 py-2 focus:outline-none focus:ring-0 w-80"
+                        />
+                        <button className="w-20 rounded text-white bg-[#0267FF]">Add</button>
+                    </div>
+                    <div className="flex gap-4">
+                        <input
+                            name="link-one"
+                            id="link-one"
+                            type="text"
+                            value=""
+                            placeholder="https://www.tiktok.com/@visitcancun"
+                            onChange={(e) => setLinkOne(e.target.value)}
+                            className="text-gray-900 text-sm border-silverBlue-2 border border-black rounded px-2.5 py-2 focus:outline-none focus:ring-0 w-80"
+                        />
+                        <button className="w-20 rounded text-white bg-[#0267FF]">Add</button>
+                    </div>
                 </div>
             </form>
         </div>

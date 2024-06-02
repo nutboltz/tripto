@@ -451,15 +451,8 @@ export const itineraryUpdated = {
     "San Diego & North Park" : [
         {
             title: "Breakfast at The Invigatorium (San Diego)",
-            duration: "8:00am - 9:00am",
+            duration: "8:30am - 9:30am",
             type: "food",
-            needsTicket: false,
-            needsReservation: false,
-        },
-        {
-            title: "Return to Airbnb for checkout",
-            duration: "9:00am - 9:30am",
-            type: "travel",
             needsTicket: false,
             needsReservation: false,
         },

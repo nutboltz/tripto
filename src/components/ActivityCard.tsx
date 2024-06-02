@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import { cn } from '@/lib/utils';
 
 interface ActivityCardProps {
     imageSrc: string;
@@ -7,13 +8,15 @@ interface ActivityCardProps {
     location: string;
     rating: number;
     category: string;
+    selected?: boolean;
+    onSelect?: () => void;
 }
 
 export default function ActivityCard(props: ActivityCardProps) {
-    const { imageSrc, title, location, rating, category } = props;
+    const { imageSrc, title, location, rating, category, selected, onSelect } = props;
 
     return <>
-            <div className="max-w-xs h-48 bg-white rounded-lg shadow-md overflow-hidden">
+            <div onClick={onSelect} className={cn(selected ? "border-2 border-green-400" : "", "max-w-xs h-48 bg-white rounded-lg shadow-md overflow-hidden")}>
                 <div className="relative">
                 <img className="w-full h-24 object-cover" src={imageSrc} alt={title} />
                 <span className="absolute top-2 left-2 bg-white text-gray-800 text-xs font-semibold px-1 py-0.5 rounded">{category}</span>

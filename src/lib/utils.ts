@@ -1,3 +1,6 @@
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
 export function getBaseUrl(): string {
     if (typeof window !== "undefined")
       // browser should use relative path
@@ -16,3 +19,8 @@ export function getBaseUrl(): string {
     // assume localhost
     return `http://localhost:${process.env.PORT ?? 3000}`;
   }
+
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+

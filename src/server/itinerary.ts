@@ -160,14 +160,12 @@ export const generateItinerary = async (tripId: string) => {
 
     // const response = await openAiResponse(generateItineraryPrompt)
 
-    const mockItinerary = "Day 1: Visit the Eiffel Tower. Day 2: Visit the Louvre. Day 3: Visit the Arc de Triomphe."
-
     await prisma.trip.update({
         where: {
             id: tripId
         },
         data: {
-            itinerary: mockItinerary
+            itinerary: itineraryPlaceholder
         }
     })
 }

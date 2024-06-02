@@ -1,15 +1,29 @@
 'use client';
 
 import { Itinerary } from '@/interfaces/itinerary';
+import { Loader2 } from 'lucide-react';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 interface ItineraryProps {
+    tripId: string;
     itinerary: Itinerary
 }
 
 export default function ItineraryTimeline(props: ItineraryProps) {
-    const  { itinerary } = props;
+    const router = useRouter();
+    const  { tripId, itinerary } = props;
     const [comments, setComments] = React.useState("");
+    const [isSubmitting, setIsSubmitting] = React.useState(false);
+
+    const onSubmitItineraryUpdate = () => {
+        setIsSubmitting(true);
+        // delay for 2 seconds
+        setTimeout(() => {
+            router.push(`/trip/${tripId}/two`);
+            setIsSubmitting(false);
+        }, 2000);
+    }
 
     return (
         <div>
@@ -73,7 +87,10 @@ export default function ItineraryTimeline(props: ItineraryProps) {
                 </div>
                 <div className="pt-8 flex gap-4">
                     <button className="px-6 py-2.5 bg-[#080E1E] text-white rounded-full">Approve itinerary</button>
-                    <button className="px-6 py-2.5 bg-[#D6D6D6] text-black rounded-full">Submit updates</button>
+                    <button className="px-6 py-2.5 bg-[#D6D6D6] text-black rounded-full" onClick={() => onSubmitItineraryUpdate()}>
+                        {isSubmitting ? (
+                            <Loader2 className="animate-spin w-5 h-5"/>
+                        ) : "Submit Updates"}</button>
                 </div>
             </div>
         </div>

@@ -10,9 +10,9 @@ export default async function handler(
     
   const { recipients, preferencesUrl } = req.body as { recipients: string[], preferencesUrl: string }
 
-  const subject = "Reminder: Submit your trip preferences!"
+  const subject = "There has been an update to your trip"
 
-  const htmlMessage = "Your friends are waiting for your preferences! Click <a href='" + preferencesUrl + "'>here</a> to submit your trip preferences."
+  const htmlMessage = "Click <a href='" + preferencesUrl + "'>here</a> to review the latest updates to your trip."
 
   await sendEmail(
     recipients, 

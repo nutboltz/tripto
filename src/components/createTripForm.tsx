@@ -58,6 +58,52 @@ export default function CreateTripForm(props: CreateTripFormProps) {
     return (
         <div>
             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+                <div className="flex flex-col gap-6">
+                    <div className="flex flex-col gap-1">
+                        <label htmlFor="destination" className="text-sm">
+                        Enter a destination
+                        </label>
+                        <input
+                                name="destination"
+                                id="destination"
+                                type="text"
+                                value=""
+                                placeholder="Cancun, Mexico"
+                                onChange={(e) => handleInputChange("destination", e.target.value)}
+                                className="text-gray-900 text-sm border-silverBlue-2 border border-black rounded px-2.5 py-2 focus:outline-none focus:ring-0 w-2/3"
+                            />
+                    </div>
+                    <div className="flex w-2/3 gap-6">
+                        <div className="flex flex-col gap-1 w-full">
+                            <label htmlFor="arrival" className="text-sm">
+                                Arrival
+                            </label>
+                            <input
+                                    name="arrival"
+                                    id="arrival"
+                                    type="text"
+                                    value=""
+                                    placeholder="08/11/2024"
+                                    onChange={(e) => handleInputChange("arrival", e.target.value)}
+                                    className="text-gray-900 text-sm border-silverBlue-2 border border-black rounded px-2.5 py-2 focus:outline-none focus:ring-0"
+                                />
+                        </div>
+                        <div className="flex flex-col gap-1 w-full">
+                            <label htmlFor="departure" className="text-sm">
+                                Departure
+                            </label>
+                            <input
+                                    name="departure"
+                                    id="departure"
+                                    type="text"
+                                    value=""
+                                    placeholder="08/20/2024"
+                                    onChange={(e) => handleInputChange("arrival", e.target.value)}
+                                    className="text-gray-900 text-sm border-silverBlue-2 border border-black rounded px-2.5 py-2 focus:outline-none focus:ring-0"
+                                />
+                        </div>
+                    </div>
+                </div>
                 {data.map((item, index) => (
                     <div key={index} className="flex flex-col gap-1">
                         <label htmlFor={item.title} className="text-sm">

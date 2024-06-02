@@ -1,14 +1,14 @@
 export const tripData = [
-    {
-        title: "Enter a destination",
-        inputType: "text",
-        placeholder: "Cancun, Mexico"
-    },
-    {
-        title: "Arrival",
-        inputType: "date",
-        placeholder: "08/11/2024"
-    },
+    // {
+    //     title: "Enter a destination",
+    //     inputType: "text",
+    //     placeholder: "Cancun, Mexico"
+    // },
+    // {
+    //     title: "Arrival",
+    //     inputType: "date",
+    //     placeholder: "08/11/2024"
+    // },
     {
         title: "Departure",
         inputType: "date",

@@ -3,11 +3,11 @@ import { RecipientsInfo } from "@/interfaces/email";
 import {
   mailgunBaseUrl,
 } from "@/lib/config";
-import { HTMLString } from "@/interfaces/parsers";
+import { HTMLString } from "@/interfaces/email";
 
-const DOMAIN = helpEmailDomain;
-const SENDER = helpEmailSender;
-const SENDER_NAME = helpEmailSenderName;
+const DOMAIN = "domain";
+const SENDER = "tripto";
+const SENDER_NAME = "TripTo";
 
 /**
  * Sends an email thru Mailgun's API

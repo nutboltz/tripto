@@ -23,7 +23,7 @@ export default function Preferences() {
 
   return (
     <main>
-      <div className={`py-10 px-16 flex flex-col gap-10 relative ${inter.className}`}>
+      <div className={`py-10 px-16 flex flex-col gap-10 relative overflow-hidden ${inter.className}`}>
         <div className="bg-[#D5AEE4] opacity-15 absolute top-[0rem] right-[0rem] h-[40rem] w-[40rem] rounded-full blur-[7rem] z-0"></div>
         <div className="bg-[#AEC7E4] opacity-15 absolute top-[20rem] -left-[10rem] h-[75rem] w-[75rem] rounded-full blur-[7rem] z-0"></div>
         <div className="font-semibold text-2xl z-10">trippin'</div>
